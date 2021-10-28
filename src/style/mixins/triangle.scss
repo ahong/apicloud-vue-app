@@ -1,0 +1,13 @@
+// 朝上的等腰三角形
+@mixin isosceles-triangle-up ($width, $height, $color) {
+    border-width: 0 $width/2 $height $width/2;
+    border-style: solid;
+    border-color: transparent transparent $color transparent;
+}
+
+// 朝下的等腰三角形
+@mixin isosceles-triangle-down ($width, $height, $color) {
+    border-width: $height $width/2 0 $width/2;
+    border-style: solid;
+    border-color: $color transparent transparent transparent;
+}

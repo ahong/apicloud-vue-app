@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="format-detection" content="date=no, email=no, address=no, telephone=no">
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="keywords" content="<%= htmlWebpackPlugin.options.title %>">
+    <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
+
+    <link rel="stylesheet" href="<%= BASE_URL %>css/common.css">
+    <% if (process.env.NODE_ENV === 'development') { %>
+    <script src="https://cdn.staticfile.org/vConsole/3.9.1/vconsole.min.js"></script>
+    <script src="<%= BASE_URL %>script/vue/vue.runtime.global.js"></script>
+    <% } else { %>
+    <script src="<%= BASE_URL %>script/vue/vue.runtime.global.prod.js"></script>
+    <% } %>
+</head>
+<body>
+    <div id="page"></div>
+    <script>
+        function apiready() {
+            <% if (process.env.NODE_ENV === 'development') { %>
+            if (typeof VConsole !== 'undefined') {
+                new VConsole();
+            }
+            <% } %>
+            Vue.createApp(window.PageComponent).mount('#page');
+        }
+    </script>
+</body>
+</html>

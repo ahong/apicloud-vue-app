@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget id="APICloud 平台提供的 appid" version="0.0.2">
+    <name>apicloud-vue-app</name>
+    <description>基于 Vue 开发 APICloud App 的解决方案</description>
+    <author href="https://github.com/ahong">ahong</author>
+
+    <access origin="*"/>
+    <content src="./html/root.html"/>
+
+    <preference name="appBackground" value="rgb(255, 255, 255)"/>
+    <preference name="windowBackground" value="rgb(255, 255, 255)"/>
+    <preference name="frameBackgroundColor" value="rgb(255, 255, 255)"/>
+    <preference name="pageBounce" value="false"/>
+    <preference name="vScrollBarEnabled" value="false"/>
+    <preference name="hScrollBarEnabled" value="false"/>
+    <preference name="autoLaunch" value="true"/>
+    <preference name="statusBarAppearance" value="true"/>
+    <preference name="fullScreen" value="false"/>
+    <preference name="autoUpdate" value="false"/>
+    <preference name="smartUpdate" value="false"/>
+    <preference name="debug" value="false"/>
+    <preference name="interfaceStyle" value="Light"/>
+    <preference name="useWKWebView" value="true"/>
+    <preference name="WKWebViewRecoveryMode" value="reload"/>
+</widget>

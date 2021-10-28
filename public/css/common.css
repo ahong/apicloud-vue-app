@@ -1,0 +1,53 @@
+/* css 变量 */
+:root {
+    /* 中性色 */
+    --black: #000;
+    --white: #fff;
+    --gray-1: #f7f8fa;
+    --gray-2: #f2f3f5;
+    --gray-3: #ebedf0;
+    --gray-4: #dcdee0;
+    --gray-5: #c8c9cc;
+    --gray-6: #969799;
+    --gray-7: #646566;
+    --gray-8: #323233;
+
+    /* Font */
+    --font-size-xs: 10px;
+    --font-size-sm: 12px;
+    --font-size-md: 14px;
+    --font-size-lg: 16px;
+    --font-size-xl: 18px;
+    --base-font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, Segoe UI, Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+    --rich-text-font-family: 'Chinese Quote', 'Segoe UI', Roboto, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif, 'Apple Color Emoji';
+    --price-integer-font-family: Avenir-Heavy, PingFang SC, Helvetica Neue, Arial, sans-serif;
+    --code-font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+
+    /* Line Height */
+    --line-height-base: 1.5715; /* 由 22 / 14 而来，表示字体大小为 14 时，行高为 22 */
+}
+
+
+/* Normalize */
+html { -webkit-font-smoothing: antialiased; -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: none; }
+body { font-family: var(--base-font-family); font-size: var(--font-size-md); line-height: var(--line-height-base); color: var(--gray-8); }
+
+body, p, h1, h2, h3, h4, h5, h6 { margin: 0; }
+ol, ul { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; text-decoration: none; }
+textarea { resize: none; }
+img, video { vertical-align: middle; border: none; }
+input, select, button, textarea { font: inherit; line-height: var(--line-height-base); color: inherit; border: none; background-color: transparent; -webkit-appearance: none; }
+:focus, a, button, input, textarea { outline: none; }
+
+nav,
+main,
+aside,
+header,
+footer,
+dialog,
+figure,
+hgroup,
+article,
+section,
+figcaption { display: block; }

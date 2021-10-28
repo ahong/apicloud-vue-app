@@ -1,0 +1,96 @@
+/* 富文本 */
+@import "var";
+
+.rich-format {
+    font-size: $font-size-lg;
+    font-family: $rich-text-font-family;
+    line-height: 1.74;
+    letter-spacing: 0.05em;
+    color: $gray-8;
+}
+
+// 标题
+%heading-reset { margin-top: 0; margin-bottom: 0; padding: 0; font-weight: bold; word-spacing: 1px; white-space: normal; }
+.rich-format {
+    @for $i from 1 through 6 {
+        h#{$i} {
+            @extend %heading-reset;
+            padding: 7px 0;
+
+            @if ($i < 5) {
+                font-size: 28-($i - 1)*4px;
+                line-height: 36-($i - 1)*4px;
+            } @else {
+                font-size: 14px;
+                line-height: 24px;
+                @if ($i == 6) { font-weight: normal; }
+            }
+        }
+    }
+}
+
+// 列表
+.rich-format {
+    ol, ul { margin: 0 0 0 3px; padding: 0; list-style-position: inside; }
+
+    %ol-decimal { list-style-type: decimal; }
+    %ol-lower-alpha { list-style-type: lower-alpha; }
+    %ol-lower-roman { list-style-type: lower-roman; }
+    @for $i from 0 through 8 {
+        @if ($i == 0) {
+            ol { @extend %ol-decimal; }
+        } @else {
+            ol[data-indent="#{$i}"] {
+                padding-left: 2em * $i;
+                @if $i % 3 == 0 { @extend %ol-decimal; }
+                @if $i % 3 == 1 { @extend %ol-lower-alpha; }
+                @if $i % 3 == 2 { @extend %ol-lower-roman; }
+            }
+        }
+    }
+
+    %ul-disc { list-style-type: disc; }
+    %ul-circle { list-style-type: circle; }
+    %ul-square { list-style-type: square; }
+    @for $i from 0 through 8 {
+        @if ($i == 0) {
+            ul { @extend %ul-disc; }
+        } @else {
+            ul[data-indent="#{$i}"] {
+                padding-left: 2em * $i;
+                @if $i % 3 == 0 { @extend %ul-disc; }
+                @if $i % 3 == 1 { @extend %ul-circle; }
+                @if $i % 3 == 2 { @extend %ul-square; }
+            }
+        }
+    }
+
+    li { margin-left: 0; white-space: normal; }
+}
+
+.rich-format {
+    a { color: #096dd9; text-decoration: none; word-wrap: break-word; }
+    b, strong { font-weight: bolder; }
+    p { margin: 0; white-space: normal; }
+    blockquote { margin: 5px 0; padding-left: 4px; border-left: 3px solid #eee; color: #8c8c8c; }
+
+    sub, sup { position: relative; font-size: 75%; line-height: 0; vertical-align: baseline; }
+    sub { bottom: -0.25em; }
+    sup { top: -0.5em; }
+
+    hr { height: 2px; margin: 18px 0; background-color: #e8e8e8; border: none; }
+    img { max-width: 100%; user-select: none; }
+    pre { overflow: auto; font-family: $code-font-family; }
+    code { margin: 0 2px; padding: 0 2px; font-family: $code-font-family; font-size: inherit; line-height: inherit; word-wrap: break-word; color: #c7254e; text-indent: 0; background-color: #f9f2f4; border: 1px solid #efdce1; border-radius: 2px; }
+
+    table { table-layout: fixed; border-collapse: collapse; border-spacing: 0; width: 100%; margin: 0; font-weight: 400; word-break: normal; word-wrap: break-word; border: 1px solid #d9d9d9; }
+    table tbody, table tr, table th, table td { margin: 0; font-weight: 400; }
+    table tr { height: 33px; }
+    table tr th,
+    table tr td { min-width: 90px; padding: 4px 8px; word-wrap: break-word; white-space: normal; vertical-align: top; border: 1px solid #d9d9d9; }
+
+    // 无需设置
+    em {}
+    del {}
+    u {}
+}

@@ -1,0 +1,77 @@
+/* 0.5 像素效果的边框线 */
+@import "../var";
+
+@mixin hairline-common {
+    content: '';
+    position: absolute;
+    box-sizing: border-box;
+    pointer-events: none;
+}
+
+// 上边框
+@mixin hairline-top($color: $gray-3, $left: 0, $right: 0, $pseudo: after) {
+    &::#{$pseudo} {
+        @include hairline-common;
+        top: 0;
+        left: $left;
+        right: $right;
+        border-top: 1px solid $color;
+        transform-origin: 50% 0;
+        transform: scaleY(0.5);
+    }
+}
+
+// 下边框
+@mixin hairline-bottom($color: $gray-3, $left: 0, $right: 0, $pseudo: after) {
+    &::#{$pseudo} {
+        @include hairline-common;
+        left: $left;
+        right: $right;
+        bottom: 0;
+        border-bottom: 1px solid $color;
+        transform-origin: 50% 100%;
+        transform: scaleY(0.5);
+    }
+}
+
+// 左边框
+@mixin hairline-left($color: $gray-3, $top: 0, $bottom: 0, $pseudo: after) {
+    &::#{$pseudo} {
+        @include hairline-common;
+        top: $top;
+        left: 0;
+        bottom: $bottom;
+        border-left: 1px solid $color;
+        transform-origin: 0 50%;
+        transform: scaleX(0.5);
+    }
+}
+
+// 右边框
+@mixin hairline-right($color: $gray-3, $top: 0, $bottom: 0, $pseudo: after) {
+    &::#{$pseudo} {
+        @include hairline-common;
+        top: $top;
+        right: 0;
+        bottom: $bottom;
+        border-right: 1px solid $color;
+        transform-origin: 100% 50%;
+        transform: scaleX(0.5);
+    }
+}
+
+// 全边框
+@mixin hairline-full($color: $gray-3, $radius: 0, $pseudo: after) {
+    & { border-radius: $radius; }
+    &::#{$pseudo} {
+        @include hairline-common;
+        top: -50%;
+        left: -50%;
+        right: -50%;
+        bottom: -50%;
+        border: 1px solid $color;
+        border-radius: $radius * 2;
+        transform-origin: 50% 50%;
+        transform: scale(0.5);
+    }
+}

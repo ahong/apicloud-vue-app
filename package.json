@@ -1,25 +1,29 @@
 {
   "name": "apicloud-vue-app",
+  "author": "ahong",
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "lint": "vue-cli-service lint",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "report": "vue-cli-service build --report",
+    "buildwatch": "vue-cli-service build --mode development --watch"
   },
   "dependencies": {
-    "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "core-js": "^3.19.0",
+    "vue": "^3.2.20"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
+    "@vue/cli-plugin-babel": "~4.5.15",
+    "@vue/cli-plugin-eslint": "~4.5.15",
+    "@vue/cli-service": "~4.5.15",
+    "@vue/compiler-sfc": "^3.2.20",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0",
-    "sass": "^1.26.5",
+    "eslint-plugin-vue": "^7.20.0",
+    "klaw-sync": "^6.0.0",
+    "sass": "^1.43.4",
     "sass-loader": "^8.0.2"
   }
 }
