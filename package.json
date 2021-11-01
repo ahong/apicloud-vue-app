@@ -25,6 +25,7 @@
     "eslint-plugin-vue": "^7.20.0",
     "klaw-sync": "^6.0.0",
     "sass": "^1.43.4",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^8.0.2",
+    "vconsole-webpack-plugin": "^1.7.3"
   }
 }
