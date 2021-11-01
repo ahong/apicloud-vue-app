@@ -1,24 +1,25 @@
-const fs = require('fs');
-const path = require('path');
-const klawSync = require('klaw-sync');
+const Fs = require('fs');
+const Path = require('path');
+const KlawSync = require('klaw-sync');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let pages = {};
-let pagesDir = path.resolve('./src/pages');
-klawSync('./src/pages', {
+let pagesDir = Path.resolve('./src/pages');
+KlawSync('./src/pages', {
     traverseAll: true,
     filter: (item) => {
-        let st = fs.statSync(item.path);
+        let st = Fs.statSync(item.path);
         if (st.isFile()) {
-            let parseData = path.parse(item.path);
-            return parseData.ext === '.vue' && parseData.name === path.basename(parseData.dir);
+            let parseData = Path.parse(item.path);
+            return parseData.ext === '.vue' && parseData.name === Path.basename(parseData.dir);
         } else {
             return false;
         }
     }
 }).map((file) => file.path).forEach((entry) => {
-    let dir = path.win32.dirname(entry);
-    let pagesDirRelativeToEntryDir = path.win32.relative(pagesDir, dir);
-    let pageKey = pagesDirRelativeToEntryDir.replace(new RegExp('\\' + path.win32.sep, 'g'), '-');
+    let dir = Path.win32.dirname(entry);
+    let pagesDirRelativeToEntryDir = Path.win32.relative(pagesDir, dir);
+    let pageKey = pagesDirRelativeToEntryDir.replace(new RegExp('\\' + Path.win32.sep, 'g'), '-');
 
     pages[pageKey] = {
         // 页面入口
@@ -28,7 +29,7 @@ klawSync('./src/pages', {
         template: `public/page.ejs`,
 
         // 输出的页面名
-        filename: `html${path.sep}${pageKey}.html`,
+        filename: `html${Path.sep}${pageKey}.html`,
 
         // 页面需要包含的代码块
         chunks: ['chunk-vendors', 'chunk-common', pageKey],
@@ -51,6 +52,11 @@ module.exports = {
             libraryExport: 'default',
             libraryTarget: 'window'
         },
+        plugins: [
+            new CopyWebpackPlugin([
+                { from: Path.resolve(__dirname, `node_modules/vue/dist/vue.runtime.global${process.env.NODE_ENV === 'production' ? '.prod' : ''}.js`), to: 'script/vue' }
+            ])
+        ],
         externals: {
             vue: 'Vue'
         }

@@ -20,6 +20,7 @@
     "@vue/cli-service": "~4.5.15",
     "@vue/compiler-sfc": "^3.2.20",
     "babel-eslint": "^10.1.0",
+    "copy-webpack-plugin": "^5.1.2",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^7.20.0",
     "klaw-sync": "^6.0.0",
