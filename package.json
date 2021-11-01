@@ -1,8 +1,11 @@
 {
   "name": "apicloud-vue-app",
-  "author": "ahong",
-  "version": "0.1.0",
-  "private": true,
+  "author": "ahong <1002363357@qq.com> (https://github.com/ahong)",
+  "version": "1.0.0",
+  "private": false,
+  "keywords": ["vue", "apicloud", "vue3"],
+  "repository": "https://github.com/ahong/apicloud-vue-app",
+  "description": "基于 Vue3 开发 APICloud App 的解决方案",
   "scripts": {
     "lint": "vue-cli-service lint",
     "serve": "vue-cli-service serve",
