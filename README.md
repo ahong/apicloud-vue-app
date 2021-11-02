@@ -71,23 +71,29 @@ npm run buildwatch
 ```
 public : 完全复制到 dist 中的文件
 src : 项目代码
-    api : 后端接口
-    app-modules : APICloud 模块
-    assets : 资源文件
-    components : Vue 组件
-    composables : Vue 组合式 API
-    mixins : Vue 混入
-    pages : 页面
-    style : 主题色、样式资源
-    pages.js : 页面配置文件
-    config.js : 自定义 App 配置项
+  api : 后端接口
+  app-modules : APICloud 模块
+  assets : 资源文件
+  components : Vue 组件
+  composables : Vue 组合式 API
+  mixins : Vue 混入
+  pages : 页面
+  style : 主题色、样式资源
+  pages.js : 页面配置文件
+  config.js : 自定义 App 配置项
 ```
 
-Tip：与所属文件夹同名的 Vue 文件会被编译为对应的 html 页面，html 文件名和文件路径对应。
+
+
+### 页面文件、页面跳转 与 使用 page.js
+
+### 页面文件
+
+​	在 `pages` 文件夹下，与文件夹同名的 `vue` 文件会被输出为对应的 `html` 文件即页面，页面的文件名是此 `vue` 文件相对 `pages` 文件夹的相对路径。
 
 
 
-### 页面跳转 与 使用 page.js
+### 页面跳转
 
 ```javascript
 import { navigateTo, redirectTo } from "@/app-modules/app/router";
