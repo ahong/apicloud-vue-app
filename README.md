@@ -17,18 +17,21 @@
 
 
 
-## Vue Cli 配置选项
+## 快速上手
 
-> 版本：4.5.15
+1. 在 `public/config.xml` 中填写 appId
 
-1. Vue version：3.x
-2. Babel
-3. Css Pre-processors：Sass/SCSS（with dart-sass）
-4. Linter / Formatter
-   - ESLint with error prevention only
-   - Lint on save
-5. Where do you prefer placing config for Babel, ESLint, etx.?
-   - In dedicated config files
+```xml
+<widget id="APICloud 平台提供的 appId" version="0.0.1"></widget>
+```
+
+2. 使用 npm 命令打包
+
+```bash
+npm run build
+```
+
+3. 使用 APICloud Studio3 或在其它编辑器使用代码同步插件，同步 `dist` 文件夹中的代码到设备上即可
 
 
 
@@ -57,12 +60,6 @@ npm run build
 ```bash
 npm run buildwatch
 ```
-
-
-
-## VConsole 调试
-
-在 `development` 模式下，支持 VConsole 调试工具。
 
 
 
@@ -133,7 +130,32 @@ export default {
 
 
 
-## WebStorm 编辑器支持
+
+
+## 其它
+
+### Vue Cli 配置选项
+
+> 版本：4.5.15
+
+1. Vue version：3.x
+2. Babel
+3. Css Pre-processors：Sass/SCSS（with dart-sass）
+4. Linter / Formatter
+   - ESLint with error prevention only
+   - Lint on save
+5. Where do you prefer placing config for Babel, ESLint, etx.?
+   - In dedicated config files
+
+
+
+### 支持 VConsole 调试
+
+在 `development` 模式下，支持 VConsole 调试工具。
+
+
+
+### WebStorm 编辑器支持
 
 ​	希望 WebStorm 编辑器识别 Vue 项目中 `@` 表示的绝对路径（Ctrl + 左键单击路径可打开对应文件），需要对编辑器做下设置：
 
