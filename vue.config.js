@@ -1,8 +1,8 @@
 const Fs = require('fs');
 const Path = require('path');
 const KlawSync = require('klaw-sync');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const VConsoleWebpackPlugin = require('vconsole-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const VConsolePlugin = require('vconsole-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -56,12 +56,13 @@ module.exports = {
             libraryTarget: 'window'
         },
         plugins: [
-            new CopyWebpackPlugin([
-                { from: Path.resolve(__dirname, `node_modules/vue/dist/vue.runtime.global${isProd ? '.prod' : ''}.js`), to: 'script/vue' }
+            new CopyPlugin([
+                {
+                    from: Path.resolve(__dirname, `node_modules/vue/dist/vue.runtime.global${isProd ? '.prod' : ''}.js`),
+                    to: 'script/vue'
+                }
             ]),
-            new VConsoleWebpackPlugin({
-                enable: !isProd
-            })
+            new VConsolePlugin({ enable: !isProd })
         ],
         externals: {
             vue: 'Vue'
