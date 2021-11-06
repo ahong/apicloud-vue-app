@@ -44,14 +44,14 @@ npm run build
 ## 目录结构
 
 ```
-┌─dist             Vue Cli 打包后的代码，用于上传到 APICloud 平台云编译 App
-|-public           原样输出到 dist 的文件，如 APICloud 平台需要的配置文件
+┌─dist				Vue Cli 打包后的代码，用于上传到 APICloud 平台云编译 App
+|-public			原样输出到 dist 的文件，如 APICloud 平台需要的配置文件
 │  ├─css
-│  │  └─common.css 	页面公共样式，内置了 Reset Css
+│  │  └─common.css	页面公共样式，内置了 Reset Css
 │  ├─res			APICloud 需要的配置文件存放目录
 │  ├─config.xml		APICloud 应用配置
 │  └─page.ejs		编译页面的页面模块，谨慎修改
-├─src               项目源代码，除了 pages 目录外，其它属于作者开发时推荐的目录结构
+├─src				项目源代码，除了 pages 目录外，其它属于作者开发时推荐的目录结构
 │  ├─api			后端接口
 │  ├─app-modules	封装 APICloud 平台或模块的方法，使它们提供的接口更加合理化
 |  ├─assets			js、css 等资源文件
@@ -60,7 +60,7 @@ npm run build
 |  ├─mixins			Vue 混入
 │  ├─pages			页面文件存放的目录，此文件夹不可缺失
 │    └─root
-│       └─root.vue  默认的 App 首页
+│       └─root.vue	默认的 App 首页
 │  ├─style			主题色、样式资源
 │  ├─pages.js		页面配置文件
 └─ └─config.js		自定义的 App 配置项
