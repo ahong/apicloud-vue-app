@@ -18,14 +18,14 @@
     "buildwatch": "vue-cli-service build --mode development --watch"
   },
   "dependencies": {
-    "core-js": "^3.19.0",
-    "vue": "^3.2.20"
+    "core-js": "^3.19.1",
+    "vue": "^3.2.21"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.15",
     "@vue/cli-plugin-eslint": "~4.5.15",
     "@vue/cli-service": "~4.5.15",
-    "@vue/compiler-sfc": "^3.2.20",
+    "@vue/compiler-sfc": "^3.2.21",
     "babel-eslint": "^10.1.0",
     "copy-webpack-plugin": "^5.1.2",
     "eslint": "^6.7.2",
