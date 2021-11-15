@@ -2,6 +2,8 @@
 
 > Vue3：https://v3.cn.vuejs.org/
 >
+> Vant3：https://youzan.github.io/vant/v3/#/zh-CN
+>
 > 兼容性：支持现代浏览器以及 Chrome >= 51、iOS >= 10.0（与 Vue3 一致）
 
 > APICloud：
@@ -160,6 +162,12 @@ export default {
     }
 };
 ```
+
+
+
+### Vant 组件库
+
+​	从 1.0.0 版本开始，内置了 Vant 组件库，它是有赞前端团队开源的移动端组件库，是业界主流的移动端组件库之一。
 
 
 
