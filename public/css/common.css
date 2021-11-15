@@ -53,3 +53,7 @@ hgroup,
 article,
 section,
 figcaption { display: block; }
+
+/* Reset Vant */
+.van-image,
+.van-circle { vertical-align: middle; }
