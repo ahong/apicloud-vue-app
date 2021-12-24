@@ -19,6 +19,7 @@
     <preference name="autoUpdate" value="false"/>
     <preference name="smartUpdate" value="false"/>
     <preference name="debug" value="false"/>
+    <preference name="android_abi" value="arm64-v8a"/>
     <preference name="interfaceStyle" value="Light"/>
     <preference name="useWKWebView" value="true"/>
     <preference name="WKWebViewRecoveryMode" value="reload"/>
