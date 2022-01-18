@@ -54,7 +54,9 @@ export function reLaunch(name, params) {
     api.addEventListener({ name: 'viewdisappear' }, () => {
         let windowStack = api.windows();
         for (let i = 1; i < windowStack.length - 1; i++) {
-            api.closeWin(windowStack[i].name);
+            api.closeWin({
+                name: windowStack[i].name
+            });
         }
     });
     navigateTo(name, params);
