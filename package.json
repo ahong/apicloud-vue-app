@@ -14,7 +14,7 @@
     "hybrid",
     "webpack"
   ],
-  "repository": "https://github.com/ahong/ava",
+  "repository": "https://github.com/ahong/apicloud-vue-app",
   "description": "基于 Vue 开发 APICloud App 的解决方案",
   "scripts": {
     "lint": "vue-cli-service lint",
