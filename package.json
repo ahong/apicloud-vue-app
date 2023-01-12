@@ -6,9 +6,13 @@
   "keywords": [
     "apicloud",
     "vue",
+    "vue2",
     "vue3",
     "app",
-    "ava"
+    "ios",
+    "android",
+    "hybrid",
+    "webpack"
   ],
   "repository": "https://github.com/ahong/ava",
   "description": "基于 Vue 开发 APICloud App 的解决方案",
