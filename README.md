@@ -23,10 +23,10 @@
 
 ## 快速上手
 
-1. 在 `public/config.xml` 中填写 appId
+1. 在 `public/config.xml` 中填写 APICloud 平台提供的 AppId
 
 ```xml
-<widget id="APICloud 平台提供的 appId" version="0.0.1"></widget>
+<widget id="" version="0.0.1"></widget>
 ```
 
 2. 安装 npm 依赖

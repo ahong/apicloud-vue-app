@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<widget id="APICloud 平台提供的 appId" version="0.0.1">
+<widget id="" version="0.0.1">
     <name>apicloud-vue-app</name>
     <description>基于 Vue 开发 APICloud App 的解决方案</description>
     <author href="https://github.com/ahong">ahong</author>
