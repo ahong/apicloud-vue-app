@@ -1,5 +1,0 @@
-// 底部安全区适配
-@mixin safe-area-inset-bottom ($attribute: padding-bottom) {
-    #{$attribute}: constant(safe-area-inset-bottom);
-    #{$attribute}: env(safe-area-inset-bottom);
-}

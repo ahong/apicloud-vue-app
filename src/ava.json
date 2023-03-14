@@ -1,0 +1,17 @@
+{
+    "pages": {
+        "root": { "url": "pages/root" },
+        "image": { "url": "pages/image" },
+        "login": {
+            "url": "pages/login",
+            "bgColor": "#f00"
+        }
+    },
+    "window": {
+        "reload": true,
+        "scrollToTop": true,
+        "hideHomeIndicator": true,
+        "slidBackType": "edge",
+        "overScrollMode": "scrolls"
+    }
+}

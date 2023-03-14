@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <meta name="format-detection" content="date=no, email=no, address=no, telephone=no">
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="keywords" content="<%= htmlWebpackPlugin.options.title %>">
+    <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
+    <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.publicPath %>/css/common.css">
+    <script src="<%= htmlWebpackPlugin.options.publicPath %>/script/vue/vue.runtime.global<%= NODE_ENV === 'production' ? '.prod' : '' %>.js"></script>
+</head>
+<body>
+    <div id="page"></div>
+    <script>
+        function apiready() {
+            <% if (NODE_ENV !== 'production') { %>
+            console.log('Page：<%= htmlWebpackPlugin.options.title %>');
+            <% } %>
+
+            if (api.systemType === 'ios') {
+                api.addEventListener({ name: 'showProgress' }, (res) => {
+                    var options = res.value;
+                    api.showProgress({
+                        title: options.title,
+                        text: options.content,
+                        modal: options.modal,
+                        animationType: options.animation,
+                    });
+                });
+                api.addEventListener({ name: 'hideProgress' }, () => {
+                    api.hideProgress();
+                });
+            }
+
+            var app = Vue.createApp(window.PageComponent);
+            app.config.globalProperties.publicPath = window.publicPath = '<%= htmlWebpackPlugin.options.publicPath %>';
+            app.mount('#page');
+        }
+    </script>
+</body>
+</html>
