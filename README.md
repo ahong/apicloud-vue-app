@@ -246,6 +246,7 @@ lib
 3. 关于权限，需要在 APICloud 云编译中选择平台对应的隐私权限，如果在没有选择的情况下调用 api.requestPermission：
    1. iOS 会闪退
    2. Android 在授权页没有对应的权限项让用户操作
+4. config.xml 中 smartUpdate 设为 false 时，APICloud 平台的闪屏广告功能无法正常使用
 
 
 
