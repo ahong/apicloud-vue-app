@@ -10,7 +10,7 @@ export function isObject(value) {
  * 判断值是否为明确的 Object 键值对数据结构
  */
 export function isPlainObject(value) {
-    return value && Object.prototype.toString.call(value) === '[object Object]';
+    return Object.prototype.toString.call(value) === '[object Object]';
 }
 
 /**
