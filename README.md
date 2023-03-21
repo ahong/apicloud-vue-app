@@ -236,6 +236,25 @@ lib
 
 
 
+### browserlist 兼容性处理
+
+> 相关链接：[Browserlist](https://github.com/browserslist/browserslist)、[Can I use](https://caniuse.com/)
+
+项目中有一个单独的 `.browserlistrc` 文件指定了目标浏览器的范围，这个值会被用来确定需要转译的 JavaScript 特性和需要添加的 CSS 浏览器前缀。
+
+```
+Android > 4.4
+ios_saf > 12
+```
+
+说明：
+
+- `Android > 4.4` 指定的是安卓系统的 WebView 内核 Chromium 版本
+- `ios_saf` 指定的是 iOS 系统版本
+- 可以使用 `npx browserlist` 命令查看所写规则具体指定了哪些版本
+
+
+
 ## APICloud 坑记录
 
 1. [WKWebView使用介绍](https://community.yonyou.com/thread-151904-1-1.html)
