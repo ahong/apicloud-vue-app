@@ -236,7 +236,7 @@ lib
 
 
 
-### browserlist 兼容性处理
+### 兼容性处理
 
 > 相关链接：[Browserlist](https://github.com/browserslist/browserslist)、[Can I use](https://caniuse.com/)
 
@@ -249,9 +249,9 @@ ios_saf > 12
 
 说明：
 
-- `Android > 4.4` 指定的是安卓系统的 WebView 内核 Chromium 版本
-- `ios_saf` 指定的是 iOS 系统版本
-- 可以使用 `npx browserlist` 命令查看所写规则具体指定了哪些版本
+- `Android > 4.4` 指定的是安卓 WebView 的 Chromium 内核
+- `ios_saf > 12` 指定的是 iOS 系统版本大于 12
+- 可以在项目目录中使用 `npx browserlist` 命令查看所写规则具体指定的目标浏览器
 
 
 
