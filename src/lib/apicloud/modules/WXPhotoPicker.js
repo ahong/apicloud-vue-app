@@ -39,9 +39,11 @@ export const WXPhotoPicker = {
     /**
      * 打开媒体资源选择器：优先判断是否有 photos 权限
      * @param {Object} options 模块 open 方法的配置项
+     * 备注：
+     * 【表现】选择普通图片时，模块返回的是 path 字段；选择 Gif 图时，模块返回的是 gifImagePath 字段；选择视频时，模块返回的是 videoPath 字段；此接口统一赋值给了 path 字段。
      */
     pickPhoto(options) {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.requestPhotosPermission().then(() => {
                 this.getModule().open(Object.assign({
                     max: 9,
@@ -54,6 +56,16 @@ export const WXPhotoPicker = {
                     }
                 }, options), (res) => {
                     if (res.eventType === 'confirm') {
+                        res.list.forEach((photo) => {
+                            if (!photo.path) {
+                                if (photo.gifImagePath) {
+                                    photo.path = photo.gifImagePath;
+                                } else if (photo.videoPath) {
+                                    photo.path = photo.videoPath;
+                                }
+                            }
+                            return photo;
+                        });
                         resolve(res.list);
                     }
                 });
