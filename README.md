@@ -251,7 +251,7 @@ ios_saf > 12
 
 - `Android > 4.4` 指定的是安卓 WebView 的 Chromium 内核
 - `ios_saf > 12` 指定的是 iOS 系统版本大于 12
-- 可以在项目目录中使用 `npx browserlist` 命令查看所写规则具体指定的目标浏览器
+- 可以在项目目录中使用 `npx browserlist` 命令查看所写规则具体指定的目标浏览器及版本号
 
 
 
