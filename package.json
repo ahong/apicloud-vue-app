@@ -1,9 +1,13 @@
 {
   "name": "apicloud-vue-app",
-  "author": "ahong <1002363357@qq.com> (https://github.com/ahong)",
   "version": "2.0.3",
+  "description": "基于 Vue 开发 APICloud App 的解决方案（Solution for developing APICloud App based on Vue）",
+  "author": "ahong <1002363357@qq.com> (https://github.com/ahong)",
   "license": "MIT",
-  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahong/apicloud-vue-app.git"
+  },
   "keywords": [
     "apicloud",
     "vue",
@@ -11,16 +15,11 @@
     "app",
     "ios",
     "android",
-    "hybrid",
     "webpack"
   ],
-  "repository": "https://github.com/ahong/apicloud-vue-app",
-  "description": "基于 Vue 开发 APICloud App 的解决方案（Solution for developing APICloud App based on Vue）",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "dev": "vue-cli-service build --watch"
+    "dev": "vue-cli-service build --watch",
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "core-js": "^3.8.3",
