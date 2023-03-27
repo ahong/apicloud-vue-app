@@ -94,7 +94,7 @@ npm run build	# 生产模式打包
 
 ```javascript
 export {
-	navigateBack,   // 关闭当前页面，返回上一页面或多级页面
+    navigateBack,   // 关闭当前页面，返回上一页面或多级页面
     navigateTo,     // 保留当前页面，跳转到应用内的某个页面
     redirectTo,     // 关闭当前页面，跳转到应用内的某个页面
     reLaunch,       // 关闭所有页面，打开到应用内的某个页面
