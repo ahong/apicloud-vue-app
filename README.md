@@ -4,19 +4,12 @@
 >
 > Node 版本：18.13.0
 >
-> [Vue Cli](https://cli.vuejs.org/)
 
-> APICloud
+> 技术栈文档
 >
-> [APICloud 开发者文档](https://docs.apicloud.com/)
+> [Vue3](https://cn.vuejs.org/) / [Vue Cli](https://cli.vuejs.org/)
 >
-> [config.xml 配置文档](https://docs.apicloud.com/Dev-Guide/app-config-manual)
->
-> [api 接口文档](https://docs.apicloud.com/Client-API/api)
-
-> Vue
->
-> [Vue3](https://cn.vuejs.org/)
+> [APICloud 开发者文档](https://docs.apicloud.com/) / [config.xml 配置文档](https://docs.apicloud.com/Dev-Guide/app-config-manual) / [api 接口文档](https://docs.apicloud.com/Client-API/api)
 
 
 
@@ -24,7 +17,7 @@
 
 ​	apicloud-vue-app 是基于 Vue 开发 APICloud App 的解决方案，在使用 Vue MVVM 模型开发页面的同时，充分保留了访问 APICloud 底层接口的能力。
 
-​	项目遵从 APICloud 多页面渲染方式，使用 Vue Cli 脚手架是为了弥补 APICloud 本身不具有的模块化能力，提高开发效率，跟随大前端的发展。
+​	项目遵从 APICloud 多页面渲染方式，使用 Vue Cli 脚手架是为了弥补 APICloud 本身不具备的模块化能力，提高开发效率，跟随大前端的发展。
 
 
 
@@ -64,9 +57,9 @@ npm run build	# 生产模式打包
 
 ### 页面和路由
 
-#### ava.json
+#### 页面配置
 
-`ava.json` 用于决定页面文件的路径、窗口样式等。
+`src/ava.json` 用于配置页面文件的路径、窗口样式等。
 
 ``` json
 {
@@ -95,9 +88,9 @@ npm run build	# 生产模式打包
 
 
 
-#### lib/apicloud/route
+#### 路由方法
 
-路由方法的 name 参数的值是 app.json 中 pages 每个页面的 key。
+`src/lib/apicloud/route` 提供了四个路由方法，它们的 name 参数是 `src/app.json -> pages` 每个页面的 key。
 
 ```javascript
 export {
@@ -140,6 +133,16 @@ export {
 
 <!-- 最多显示三行 -->
 <div class="ava-ellipsis--l3"></div>
+```
+
+- 矢量图标
+
+```html
+<!-- 上下左右箭头 -->
+<i class="ava-icon ava-icon-arrow-up"></i>
+<i class="ava-icon ava-icon-arrow-down"></i>
+<i class="ava-icon ava-icon-arrow-left"></i>
+<i class="ava-icon ava-icon-arrow-right"></i>
 ```
 
 
