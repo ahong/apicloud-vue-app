@@ -65,7 +65,8 @@
         background-color: #fff;
 
         &--hairline {
-            border-bottom: 0.5px solid @gray-3;
+            position: relative;
+            .hairline-bottom();
         }
         &--fixed {
             position: fixed;
