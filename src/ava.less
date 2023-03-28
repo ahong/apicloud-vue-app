@@ -49,8 +49,8 @@
     box-sizing: border-box;
     pointer-events: none;
 }
-.hairline-top(@color: @gray-3, @left: 0, @right: 0, @pseudo: '::after') {
-    &@{pseudo} {
+.hairline-top(@color: @gray-3, @left: 0, @right: 0) {
+    &::after {
         .hairline-common();
         top: 0;
         left: @left;
@@ -60,8 +60,8 @@
         transform: scaleY(0.5);
     }
 }
-.hairline-bottom(@color: @gray-3, @left: 0, @right: 0, @pseudo: '::after') {
-    &@{pseudo} {
+.hairline-bottom(@color: @gray-3, @left: 0, @right: 0) {
+    &::after {
         .hairline-common();
         left: @left;
         right: @right;
@@ -71,8 +71,8 @@
         transform: scaleY(0.5);
     }
 }
-.hairline-left(@color: @gray-3, @top: 0, @bottom: 0, @pseudo: '::after') {
-    &@{pseudo} {
+.hairline-left(@color: @gray-3, @top: 0, @bottom: 0) {
+    &::after {
         .hairline-common();
         top: @top;
         left: 0;
@@ -82,8 +82,8 @@
         transform: scaleX(0.5);
     }
 }
-.hairline-right(@color: @gray-3, @top: 0, @bottom: 0, @pseudo: '::after') {
-    &@{pseudo} {
+.hairline-right(@color: @gray-3, @top: 0, @bottom: 0) {
+    &::after {
         .hairline-common();
         top: @top;
         right: 0;
@@ -93,11 +93,11 @@
         transform: scaleX(0.5);
     }
 }
-.hairline-surround(@color: @gray-3, @radius: 0, @pseudo: '::after') {
+.hairline-surround(@color: @gray-3, @radius: 0) {
     & {
-        border-radius: $radius;
+        border-radius: @radius;
     }
-    &@{pseudo} {
+    &::after {
         .hairline-common();
         top: -50%;
         left: -50%;
