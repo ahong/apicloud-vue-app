@@ -1,11 +1,7 @@
 <template>
-    <AvaSafeHeader border sticky-type="fixed" @mounted="onSafeHeaderMounted">
+    <AvaSafeHeader border @mounted="onSafeHeaderMounted">
         <div>AvaSafeHeader</div>
     </AvaSafeHeader>
-    <div style="height: 25vh; background-color: #fff"></div>
-    <div style="height: 25vh; background-color: #f00"></div>
-    <div style="height: 25vh; background-color: #0f0"></div>
-    <div style="height: 25vh; background-color: #00f"></div>
     <div @click="navigateToLogin">登录测试页</div>
     <div @click="navigateToImage">静态资源测试页</div>
     <AvaSafeFooter border sticky-type="fixed" @mounted="onSafeFooterMounted">
