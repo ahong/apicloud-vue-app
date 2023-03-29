@@ -3,7 +3,7 @@
     Slots
         default：内容
     Events
-        mounted：组件挂载时触发，返回底部的高度
+        mounted：组件挂载时触发，返回组件的高度
 -->
 <script>
     import { h } from "vue";

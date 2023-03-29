@@ -1,12 +1,15 @@
 <template>
+    <AvaSafeNavBar title="登录页" color="red" :left-arrow="false"></AvaSafeNavBar>
     <div class="root">{{ message }}</div>
     <div>{{ pageParam.message }}</div>
 </template>
 
 <script>
+    import AvaSafeNavBar from "@/lib/components/layout/AvaSafeNavBar";
     import { usePageParam } from "@/lib/composables/use-page-param";
     export default {
         name: 'root',
+        components: { AvaSafeNavBar },
         setup() {
             console.log('setup');
             const pageParam = usePageParam({

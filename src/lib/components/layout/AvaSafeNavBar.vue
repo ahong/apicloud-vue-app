@@ -6,26 +6,23 @@
         title：自定义标题内容
         default：显示在导航栏下面的内容
     Events
+        mounted：组件挂载时触发，返回组件的高度
         click-left：点击左侧区域时触发
         click-right：点击右侧区域时触发
 -->
 <template>
     <div :class="rootCls" :style="rootStyle">
-        <div class="nav-bar">
-            <div class="nav-bar-left">
+        <div class="ava-nav-bar" :style="navBarStyle">
+            <div class="ava-nav-bar-left">
                 <slot name="left">
-
+                    <i v-if="leftArrow" class="ava-icon ava-icon-arrow-left"></i>
                 </slot>
             </div>
-            <div class="nav-bar-title">
-                <slot name="title">
-
-                </slot>
+            <div class="ava-ellipsis ava-nav-bar-title">
+                <slot name="title">{{ title }}</slot>
             </div>
-            <div class="nav-bar-right">
-                <slot name="right">
-
-                </slot>
+            <div class="ava-nav-bar-right">
+                <slot name="right"></slot>
             </div>
         </div>
         <slot></slot>
@@ -80,11 +77,12 @@
                 }
                 return style;
             },
+            navBarStyle() {
+                return isDef(this.color) ? { color: this.color } : null;
+            }
         },
         mounted() {
-            this.$nextTick(() => {
-                this.$emit('mounted', this.$el.offsetHeight);
-            });
+            this.$emit('mounted', this.$el.offsetHeight);
         },
     }
 </script>
@@ -94,7 +92,9 @@
         background-color: #fff;
 
         &--hairline {
-            border-bottom: 0.5px solid @gray-3;
+            position: relative;
+            z-index: 1;
+            .hairline-bottom();
         }
         &--fixed {
             position: fixed;
@@ -107,6 +107,43 @@
             position: sticky;
             top: 0;
             z-index: 1;
+        }
+
+        .ava-nav-bar {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 46px;
+            color: @gray-8;
+            user-select: none;
+
+            &-left,
+            &-right {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                display: flex;
+                align-items: center;
+                padding: 0 @padding-md;
+                font-size: @font-size-md;
+
+                .ava-icon {
+                    font-size: 20px;
+                }
+            }
+            &-left {
+                left: 0;
+            }
+            &-right {
+                right: 0;
+            }
+
+            &-title {
+                max-width: 70%;
+                font-size: @font-size-lg;
+                font-weight: 600;
+            }
         }
     }
 </style>
