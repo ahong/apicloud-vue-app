@@ -8,6 +8,8 @@
     Events
         mounted：组件挂载时触发，返回组件的高度
         navigate-back：点击导航栏左侧箭头时触发
+    Tip
+        绑定 navigate-back 事件时，会同步监听安卓设备的 back 键
 -->
 <template>
     <div :class="rootCls" :style="rootStyle">
@@ -79,6 +81,11 @@
             },
             navBarStyle() {
                 return isDef(this.color) ? { color: this.color } : null;
+            }
+        },
+        created() {
+            if (this.$attrs.onNavigateBack) {
+                api.addEventListener({ name: 'keyback' }, this.$attrs.onNavigateBack);
             }
         },
         mounted() {

@@ -1,5 +1,5 @@
 <template>
-    <AvaSafeNavBar title="登录页"></AvaSafeNavBar>
+    <AvaSafeNavBar title="登录页" @navigate-back="onNavigateBack"></AvaSafeNavBar>
     <div class="root">{{ message }}</div>
     <div>{{ pageParam.message }}</div>
 </template>
