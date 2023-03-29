@@ -243,7 +243,7 @@ lib
 
 > 相关链接：[Browserlist](https://github.com/browserslist/browserslist)、[Can I use](https://caniuse.com/)
 
-项目中有一个单独的 `.browserlistrc` 文件指定了目标浏览器的范围，这个值会被用来确定需要转译的 JavaScript 特性和需要添加的 CSS 浏览器前缀。
+项目中有一个单独的 `.browserslistrc` 文件指定了目标浏览器的范围，这个值会被用来确定需要转译的 JavaScript 特性和需要添加的 CSS 浏览器前缀。
 
 ```
 Android > 4.4
@@ -254,7 +254,7 @@ ios_saf > 12
 
 - `Android > 4.4` 指定的是安卓 WebView 的 Chromium 内核
 - `ios_saf > 12` 指定的是 iOS 系统版本大于 12
-- 可以在项目目录中使用 `npx browserlist` 命令查看所写规则具体指定的目标浏览器及版本号
+- 可以在项目目录中使用 `npx browserslist` 命令查看所写规则具体指定的目标浏览器及版本号
 
 
 

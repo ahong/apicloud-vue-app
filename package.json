@@ -18,8 +18,8 @@
     "webpack"
   ],
   "scripts": {
-    "dev": "vue-cli-service build --watch",
-    "build": "vue-cli-service build"
+    "dev": "vue-cli-service build --no-module --watch",
+    "build": "vue-cli-service build --no-module"
   },
   "dependencies": {
     "core-js": "^3.8.3",
