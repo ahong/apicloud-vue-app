@@ -7,8 +7,7 @@
         default：显示在导航栏下面的内容
     Events
         mounted：组件挂载时触发，返回组件的高度
-        click-left：点击左侧区域时触发
-        click-right：点击右侧区域时触发
+        navigate-back：点击导航栏左侧箭头时触发
 -->
 <template>
     <div :class="rootCls" :style="rootStyle">
