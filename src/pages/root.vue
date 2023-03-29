@@ -1,7 +1,5 @@
 <template>
-    <AvaSafeHeader border @mounted="onSafeHeaderMounted">
-        <div>AvaSafeHeader</div>
-    </AvaSafeHeader>
+    <AvaSafeArea :position="position">123</AvaSafeArea>
     <div style="height: 25vh; background-color: #fff">123</div>
     <div @click="navigateToLogin">登录测试页</div>
     <div @click="navigateToImage">静态资源测试页</div>
@@ -11,15 +9,16 @@
 </template>
 
 <script>
+    import AvaSafeArea from "@/lib/components/layout/AvaSafeArea";
     import AvaSafeHeader from "@/lib/components/layout/AvaSafeHeader";
     import AvaSafeFooter from "@/lib/components/layout/AvaSafeFooter";
     import { navigateTo } from "@/lib/apicloud/route";
     export default {
         name: 'root',
-        components: { AvaSafeHeader, AvaSafeFooter },
+        components: { AvaSafeArea, AvaSafeHeader, AvaSafeFooter },
         data() {
             return {
-                message: 'message',
+                position: '',
             };
         },
         computed: {
@@ -31,7 +30,12 @@
             }
         },
         created() {
-            console.log('devicePixelRatio：', window.devicePixelRatio);
+            setTimeout(() => {
+                this.position = 'top';
+                setTimeout(() => {
+                    this.position = 'bottom';
+                }, 3000);
+            }, 10000);
         },
         methods: {
             onSafeHeaderMounted(height) {

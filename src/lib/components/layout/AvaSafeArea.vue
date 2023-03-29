@@ -5,26 +5,26 @@
     Tips
         占用了根元素的 paddingTop 或 paddingBottom，使用组件时不要对根元素设置此样式
 -->
-<template>
-    <div :style="rootStyle"><slot></slot></div>
-</template>
-
 <script>
+    import { h, computed } from "vue";
     export default {
         name: "AvaSafeArea",
         props: {
             position: String    // 安全区的位置，可选值有 top、bottom
         },
-        computed: {
-            rootStyle() {
-                let style = {};
-                if (this.position === 'top') {
-                    style.paddingTop = api.safeArea.top + 'px';
-                } else if (this.position === 'bottom') {
-                    style.paddingBottom = api.safeArea.bottom + 'px';
+        setup(props, { slots }) {
+            const rootStyle = computed(() => {
+                if (props.position === 'top') {
+                    return {
+                        paddingTop: `${api.safeArea.top}px`
+                    };
+                } else if (props.position === 'bottom') {
+                    return {
+                        paddingBottom: `${api.safeArea.bottom}px`
+                    };
                 }
-                return style;
-            }
+            });
+            return () => h('div', { style: rootStyle.value }, slots.default());
         }
     }
 </script>
