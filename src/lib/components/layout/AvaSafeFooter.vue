@@ -1,5 +1,12 @@
 <!--
     适配底部安全区的底部
+    Props
+        border：是否显示上边框
+        sticky：是否固定在底部
+        stickyType：使用 fixed 或 sticky 固定在底部，默认使用 sticky
+        zIndex：定位层级，默认为 1
+        background：背景，默认为白色背景
+        placeholder：使用 fixed 固定在底部时，是否在标签位置生成一个等高的占位元素
     Slots
         default：内容
     Events
@@ -12,20 +19,20 @@
         name: "AvaSafeBottom",
         emits: ['mounted'],
         props: {
-            border: Boolean,            // 是否显示上边框
-            sticky: {                   // 是否固定在底部
+            border: Boolean,
+            sticky: {
                 type: Boolean,
                 default: true
             },
-            stickyType: {               // 使用 fixed 或 sticky 固定在底部，默认使用 sticky
+            stickyType: {
                 validator(value) {
                     return ['fixed', 'sticky'].includes(value);
                 },
                 default: 'sticky'
             },
-            zIndex: [Number, String],   // 定位层级，默认为 1
-            background: String,         // 背景，默认为白色背景
-            placeholder: Boolean        // 使用 fixed 固定在底部时，是否在标签位置生成一个等高的占位元素
+            zIndex: [Number, String],
+            background: String,
+            placeholder: Boolean
         },
         data() {
             return {
