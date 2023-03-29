@@ -2,6 +2,7 @@
     <AvaSafeHeader border @mounted="onSafeHeaderMounted">
         <div>AvaSafeHeader</div>
     </AvaSafeHeader>
+    <div style="height: 25vh; background-color: #fff">123</div>
     <div @click="navigateToLogin">登录测试页</div>
     <div @click="navigateToImage">静态资源测试页</div>
     <AvaSafeFooter border sticky-type="fixed" @mounted="onSafeFooterMounted">
@@ -28,6 +29,9 @@
             logoBackground() {
                 return `url('${this.publicPath}/image/logo.png')`;
             }
+        },
+        created() {
+            console.log('devicePixelRatio：', window.devicePixelRatio);
         },
         methods: {
             onSafeHeaderMounted(height) {

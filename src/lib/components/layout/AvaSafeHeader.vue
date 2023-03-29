@@ -15,6 +15,7 @@
     import { isDef } from "@/lib/utils/vue/props";
     export default {
         name: "AvaSafeHeader",
+        emits: ['mounted'],
         props: {
             border: Boolean,            // 是否显示下边框
             sticky: {                   // 是否固定在顶部
@@ -53,10 +54,8 @@
             },
         },
         mounted() {
-            this.$nextTick(() => {
-                this.$emit('mounted', this.$el.offsetHeight);
-            });
-        },
+            this.$emit('mounted', this.$el.offsetHeight);
+        }
     }
 </script>
 
@@ -66,13 +65,14 @@
 
         &--hairline {
             position: relative;
+            z-index: 1;
             .hairline-bottom();
         }
         &--fixed {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
+            width: 100%;
             z-index: 1;
         }
         &--sticky {
