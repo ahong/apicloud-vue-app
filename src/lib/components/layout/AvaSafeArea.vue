@@ -1,7 +1,7 @@
 <!--
     头部、底部安全区适配
     Slots
-        default：组件内容
+        default：内容
     Tips
         占用了根元素的 paddingTop 或 paddingBottom，使用组件时不要对根元素设置此样式
 -->
