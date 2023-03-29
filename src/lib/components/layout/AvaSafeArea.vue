@@ -1,5 +1,7 @@
 <!--
     适配顶部状态栏、底部安全区
+    Props
+        position：安全区的位置，可选值有 top、bottom
     Slots
         default：内容
     Tips
@@ -10,7 +12,7 @@
     export default {
         name: "AvaSafeArea",
         props: {
-            position: String    // 安全区的位置，可选值有 top、bottom
+            position: String
         },
         setup(props, { slots }) {
             const rootStyle = computed(() => {
