@@ -15,7 +15,7 @@
         <div class="ava-nav-bar" :style="navBarStyle">
             <div class="ava-nav-bar-left">
                 <slot name="left">
-                    <i v-if="leftArrow" class="ava-icon ava-icon-arrow-left"></i>
+                    <i v-if="leftArrow" class="ava-icon ava-icon-arrow-left" @click="onClickLeftArrow"></i>
                 </slot>
             </div>
             <div class="ava-ellipsis ava-nav-bar-title">
@@ -30,6 +30,7 @@
 </template>
 
 <script>
+    import { navigateBack } from "@/lib/apicloud/route";
     import { isDef } from "@/lib/utils/vue/props";
     export default {
         name: 'AvaSafeNavBar',
@@ -84,6 +85,16 @@
         mounted() {
             this.$emit('mounted', this.$el.offsetHeight);
         },
+        methods: {
+            onClickLeftArrow() {
+                let { onNavigateBack } = this.$attrs;
+                if (onNavigateBack) {
+                    onNavigateBack();
+                } else {
+                    navigateBack();
+                }
+            }
+        }
     }
 </script>
 

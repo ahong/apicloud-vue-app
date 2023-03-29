@@ -1,5 +1,5 @@
 <template>
-    <AvaSafeNavBar title="登录页" color="red" :left-arrow="false"></AvaSafeNavBar>
+    <AvaSafeNavBar title="登录页"></AvaSafeNavBar>
     <div class="root">{{ message }}</div>
     <div>{{ pageParam.message }}</div>
 </template>
@@ -30,7 +30,9 @@
             console.log('beforeCreate');
         },
         methods: {
-
+            onNavigateBack() {
+                console.log('login onNavigateBack');
+            }
         },
     };
 </script>
