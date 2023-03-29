@@ -1,9 +1,9 @@
 <!--
     适配状态栏的安全头部
     Slots
-        default：头部内容
+        default：内容
     Events
-        mounted：头部挂载时触发，返回头部的高度
+        mounted：组件挂载时触发，返回头部的高度
 -->
 <template>
     <div :class="rootCls" :style="rootStyle">
@@ -72,7 +72,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            right: 0;
             z-index: 1;
         }
         &--sticky {

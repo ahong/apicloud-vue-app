@@ -1,8 +1,16 @@
+<!--
+    适配状态栏的安全底部
+    Slots
+        default：内容
+    Events
+        mounted：组件挂载时触发，返回底部的高度
+-->
 <script>
     import { h } from "vue";
     import { isDef } from "@/lib/utils/vue/props";
     export default {
         name: "AvaSafeBottom",
+        emits: ['mounted'],
         props: {
             border: Boolean,            // 是否显示上边框
             sticky: {                   // 是否固定在底部
@@ -47,10 +55,8 @@
             },
         },
         mounted() {
-            this.$nextTick(() => {
-                this.rootHeight = this.$refs.rootRef.offsetHeight;
-                this.$emit('mounted', this.rootHeight);
-            });
+            this.rootHeight = this.$refs.rootRef.offsetHeight;
+            this.$emit('mounted', this.rootHeight);
         },
         render() {
             let rootVnode = h('div', {
@@ -75,7 +81,9 @@
         background-color: #fff;
 
         &--hairline {
-            border-top: 0.5px solid @gray-3;
+            position: relative;
+            z-index: 1;
+            .hairline-top();
         }
         &--fixed {
             position: fixed;
