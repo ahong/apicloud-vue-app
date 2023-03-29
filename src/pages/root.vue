@@ -1,5 +1,6 @@
 <template>
-    <AvaSafeArea :position="position">123</AvaSafeArea>
+    <AvaSafeHeader @mounted="safeHeaderHeight = $event">123</AvaSafeHeader>
+    <div>safeHeaderHeight: {{ safeHeaderHeight }}</div>
     <div style="height: 25vh; background-color: #fff">123</div>
     <div @click="navigateToLogin">登录测试页</div>
     <div @click="navigateToImage">静态资源测试页</div>
@@ -9,16 +10,16 @@
 </template>
 
 <script>
-    import AvaSafeArea from "@/lib/components/layout/AvaSafeArea";
     import AvaSafeHeader from "@/lib/components/layout/AvaSafeHeader";
     import AvaSafeFooter from "@/lib/components/layout/AvaSafeFooter";
     import { navigateTo } from "@/lib/apicloud/route";
     export default {
         name: 'root',
-        components: { AvaSafeArea, AvaSafeHeader, AvaSafeFooter },
+        components: { AvaSafeHeader, AvaSafeFooter },
         data() {
             return {
                 position: '',
+                safeHeaderHeight: 0,
             };
         },
         computed: {

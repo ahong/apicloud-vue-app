@@ -1,60 +1,69 @@
 <!--
     适配顶部状态栏的头部
+    Props
+        border：是否显示下边框
+        sticky：是否固定在顶部
+        stickyType：使用 fixed 或 sticky 固定在顶部，默认使用 sticky
+        zIndex：定位层级，默认为 1
+        background：背景，默认为白色背景
     Slots
         default：内容
     Events
         mounted：组件挂载时触发，返回组件的高度
 -->
 <template>
-    <div :class="rootCls" :style="rootStyle">
+    <div :class="rootCls" :style="rootStyle" ref="rootRef">
         <slot></slot>
     </div>
 </template>
 
 <script>
+    import { ref, computed, onMounted } from "vue";
     import { isDef } from "@/lib/utils/vue/props";
     export default {
         name: "AvaSafeHeader",
         emits: ['mounted'],
         props: {
-            border: Boolean,            // 是否显示下边框
-            sticky: {                   // 是否固定在顶部
+            border: Boolean,
+            sticky: {
                 type: Boolean,
                 default: true
             },
-            stickyType: {               // 使用 fixed 或 sticky 固定在顶部，默认使用 sticky
+            stickyType: {
                 validator(value) {
                     return ['fixed', 'sticky'].includes(value);
                 },
                 default: 'sticky'
             },
-            zIndex: [Number, String],   // 定位层级，默认为 1
-            background: String,         // 背景，默认为白色背景
+            zIndex: [Number, String],
+            background: String
         },
-        computed: {
-            rootCls() {
+        setup(props, { emit }) {
+            const rootRef = ref(null);
+            const rootCls = computed(() => {
                 let namespace = 'ava-safe-header';
                 return {
                     [namespace]: true,
-                    [`${namespace}--hairline`]: this.border,
-                    [`${namespace}--${this.stickyType}`]: this.sticky
+                    [`${namespace}--hairline`]: props.border,
+                    [`${namespace}--${props.stickyType}`]: props.sticky
                 };
-            },
-            rootStyle() {
+            });
+            const rootStyle = computed(() => {
                 let style = {
                     paddingTop: api.safeArea.top + 'px'
                 };
-                if (isDef(this.zIndex)) {
-                    style.zIndex = +this.zIndex;
+                if (isDef(props.zIndex)) {
+                    style.zIndex = +props.zIndex;
                 }
-                if (isDef(this.background)) {
-                    style.background = this.background;
+                if (isDef(props.background)) {
+                    style.background = props.background;
                 }
                 return style;
-            },
-        },
-        mounted() {
-            this.$emit('mounted', this.$el.offsetHeight);
+            });
+            onMounted(() => {
+                emit('mounted', rootRef.value.offsetHeight);
+            });
+            return { rootRef, rootCls, rootStyle };
         }
     }
 </script>

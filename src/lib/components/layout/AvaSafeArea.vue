@@ -8,7 +8,7 @@
         占用了根元素的 paddingTop 或 paddingBottom，使用组件时不要对根元素设置此样式
 -->
 <script>
-    import { h, computed } from "vue";
+    import { computed, h } from "vue";
     export default {
         name: "AvaSafeArea",
         props: {
