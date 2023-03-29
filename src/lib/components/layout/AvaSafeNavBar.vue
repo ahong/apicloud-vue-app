@@ -98,7 +98,7 @@
     }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
     .ava-safe-nav-bar {
         background-color: #fff;
 
