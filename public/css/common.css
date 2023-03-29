@@ -103,6 +103,16 @@ textarea:focus {
     -webkit-line-clamp: 3;
 }
 
+/* global - 安全区 */
+.ava-safe-area-top {
+    padding-top: constant(safe-area-inset-top);
+    padding-top: env(safe-area-inset-top);
+}
+.ava-safe-area-bottom {
+    padding-bottom: constant(safe-area-inset-bottom);
+    padding-bottom: env(safe-area-inset-bottom)
+}
+
 /* Iconfont */
 @font-face {
     font-family: 'ava-icon';
