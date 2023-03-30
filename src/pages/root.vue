@@ -1,6 +1,5 @@
 <template>
     <AvaSafeHeader @mounted="safeHeaderHeight = $event">123</AvaSafeHeader>
-    <div>safeHeaderHeight: {{ safeHeaderHeight }}</div>
     <div style="height: 25vh; background-color: #fff">123</div>
     <div @click="navigateToLogin">登录测试页</div>
     <div @click="navigateToImage">静态资源测试页</div>

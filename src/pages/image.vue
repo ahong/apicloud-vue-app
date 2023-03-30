@@ -1,18 +1,30 @@
 <template>
-    <img :src="`${publicPath}/image/logo.png`" alt="">
+    <AvaSafeNavBar title="图片资源页"></AvaSafeNavBar>
+    <div>123</div>
+    <AvaImage src="./i.png" width="100" height="100" :show-error="false" @click="onClickAvaImage"></AvaImage>
+    <br>
     <img :src="logoURL" alt="">
+    <br>
     <div class="logo"></div>
 </template>
 
 <script>
+    import AvaImage from "@/lib/components/AvaImage";
+    import AvaSafeNavBar from "@/lib/components/layout/AvaSafeNavBar";
     export default {
         name: "image",
+        components: { AvaImage, AvaSafeNavBar },
         computed: {
             logoURL() {
                 return `${this.publicPath}/image/logo.png`;
             },
             logoBackground() {
                 return `url('${this.publicPath}/image/logo.png')`;
+            }
+        },
+        methods: {
+            onClickAvaImage() {
+                console.log('onClickAvaImage');
             }
         }
     }
