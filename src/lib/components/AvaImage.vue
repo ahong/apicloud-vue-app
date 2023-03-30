@@ -31,12 +31,12 @@
 
         <div v-if="showLoading && isLoading" class="ava-image-status">
             <slot name="loading">
-                <AvaIcon name="photo" class="ava-image-status-icon"></AvaIcon>
+                <AvaIcon name="picture" class="ava-image-status-icon"></AvaIcon>
             </slot>
         </div>
         <div v-if="showError && isError" class="ava-image-status">
             <slot name="error">
-                <AvaIcon name="photo-fail" class="ava-image-status-icon"></AvaIcon>
+                <AvaIcon name="picture-fail" class="ava-image-status-icon"></AvaIcon>
             </slot>
         </div>
 
