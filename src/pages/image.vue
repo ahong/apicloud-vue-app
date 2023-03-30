@@ -1,7 +1,7 @@
 <template>
     <AvaSafeNavBar title="图片资源页"></AvaSafeNavBar>
     <div>123</div>
-    <AvaImage src="./i.png" width="100" height="100" :show-error="false" @click="onClickAvaImage"></AvaImage>
+    <AvaImage :src="logoURL" width="100" height="100" cache @click="onClickAvaImage"></AvaImage>
     <br>
     <img :src="logoURL" alt="">
     <br>

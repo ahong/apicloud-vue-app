@@ -15,7 +15,9 @@
         round：是否显示为圆形，优先级高于 radius
         dot：是否显示右上角小红点
         badge：右上角徽标的内容，优先级高于 dot
-
+        showLoading：是否展示图片加载中提示
+        showError：是否展示图片加载失败提示
+        cache：是否本地缓存图片
     图片填充模式：
         fill：拉伸图片，使图片填满元素
         cover：保持宽高比缩放图片，使图片的短边能完全显示出来，裁剪长边
@@ -23,12 +25,11 @@
         none：保持图片原有尺寸
         scale-down：取 none 或 contain 中较小的一个
 
-        1. apicloud 缓存
         2. ava-icon
 -->
 <template>
     <div class="ava-image" :style="rootStyle">
-        <img v-if="src && !(showError && isError)" :src="src" :alt="alt" :style="imgStyle" @load="onLoad" @error="onError" class="ava-image-img">
+        <img v-if="_src && !(showError && isError)" :src="_src" :alt="alt" :style="imgStyle" @load="onLoad" @error="onError" class="ava-image-img">
 
         <div v-if="showLoading && isLoading" class="ava-image-status">
             <slot name="loading">
@@ -69,9 +70,11 @@
                 type: Boolean,
                 default: true
             },
+            cache: Boolean
         },
         data() {
             return {
+                _src: '',
                 isLoading: true,
                 isError: false,
             };
@@ -99,7 +102,41 @@
                 return isDef(this.badge) && this.badge !== '';
             }
         },
+        watch: {
+            src: {
+                handler: 'setSrc',
+                immediate: true
+            },
+            cache: 'setSrc',
+            _src() {
+                this.isLoading = true;
+                this.isError = false;
+            }
+        },
         methods: {
+            setSrc() {
+                let a = new Date();
+                if (this.src && this.cache) {
+                    if (!this.src.startsWith('http')) {
+                        // 非远程地址直接使用原地址
+                        this._src = this.src;
+                        return;
+                    }
+                    api.imageCache({
+                        url: this.src,
+                        policy: 'cache_else_network',
+                        thumbnail: false
+                    }, (res) => {
+                        if (res.status) {
+                            this._src = res.url;
+                        } else {
+                            this._src = this.src;
+                        }
+                    });
+                } else {
+                    this._src = this.src;
+                }
+            },
             onLoad(event) {
                 this.isLoading = false;
                 this.$emit('load', event);
