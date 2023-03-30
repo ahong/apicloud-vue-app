@@ -27,7 +27,7 @@
 -->
 <template>
     <div class="ava-image" :style="rootStyle">
-        <img v-if="_src && !(showError && isError)" :src="_src" :alt="alt" :style="imgStyle" @load="onLoad" @error="onError" class="ava-image-img">
+        <img v-if="renderSrc && !(showError && isError)" :src="renderSrc" :alt="alt" :style="imgStyle" @load="onLoad" @error="onError" class="ava-image-img">
 
         <div v-if="showLoading && isLoading" class="ava-image-status">
             <slot name="loading">
@@ -75,7 +75,7 @@
         },
         data() {
             return {
-                _src: '',
+                renderSrc: '',
                 isLoading: true,
                 isError: false,
             };
@@ -105,21 +105,21 @@
         },
         watch: {
             src: {
-                handler: 'setSrc',
+                handler: 'setRenderSrc',
                 immediate: true
             },
-            cache: 'setSrc',
-            _src() {
+            cache: 'setRenderSrc',
+            renderSrc() {
                 this.isLoading = true;
                 this.isError = false;
             }
         },
         methods: {
-            setSrc() {
+            setRenderSrc() {
                 if (this.src && this.cache) {
                     if (!this.src.startsWith('http')) {
                         // 非远程地址直接使用原地址
-                        this._src = this.src;
+                        this.renderSrc = this.src;
                         return;
                     }
                     api.imageCache({
@@ -128,13 +128,13 @@
                         thumbnail: false
                     }, (res) => {
                         if (res.status) {
-                            this._src = res.url;
+                            this.renderSrc = res.url;
                         } else {
-                            this._src = this.src;
+                            this.renderSrc = this.src;
                         }
                     });
                 } else {
-                    this._src = this.src;
+                    this.renderSrc = this.src;
                 }
             },
             onLoad(event) {

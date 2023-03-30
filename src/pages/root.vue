@@ -32,6 +32,7 @@
             }
         },
         created() {
+            console.log(123);
             setTimeout(() => {
                 this.footerStickyType = 'fixed';
                 setTimeout(() => {
