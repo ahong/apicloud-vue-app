@@ -26,7 +26,9 @@
                     };
                 }
             });
-            return () => h('div', { style: rootStyle.value }, slots.default());
+            return () => h('div', {
+                style: rootStyle.value
+            }, slots.default && slots.default());
         }
     }
 </script>

@@ -13,7 +13,7 @@
         mounted：组件挂载时触发，返回组件的高度
 -->
 <script>
-    import { h } from "vue";
+    import { ref, computed, onMounted, h } from "vue";
     import { isDef } from "@/lib/utils/vue/props";
     export default {
         name: "AvaSafeBottom",
@@ -34,51 +34,50 @@
             background: String,
             placeholder: Boolean
         },
-        data() {
-            return {
-                rootHeight: 0
-            };
-        },
-        computed: {
-            rootCls() {
+        setup(props, { emit, slots }) {
+            const rootRef = ref();
+            const rootHeight = ref(0);
+            const rootCls = computed(() => {
                 let namespace = 'ava-safe-footer';
                 return {
                     [namespace]: true,
-                    [`${namespace}--hairline`]: this.border,
-                    [`${namespace}--${this.stickyType}`]: this.sticky
+                    [`${namespace}--hairline`]: props.border,
+                    [`${namespace}--${props.stickyType}`]: props.sticky
                 };
-            },
-            rootStyle() {
+            });
+            const rootStyle = computed(() => {
                 let style = {
                     paddingBottom: api.safeArea.bottom + 'px'
                 };
-                if (isDef(this.zIndex)) {
-                    style.zIndex = +this.zIndex;
+                if (isDef(props.zIndex)) {
+                    style.zIndex = +props.zIndex;
                 }
-                if (isDef(this.background)) {
-                    style.background = this.background;
+                if (isDef(props.background)) {
+                    style.background = props.background;
                 }
                 return style;
-            },
-        },
-        mounted() {
-            this.rootHeight = this.$refs.rootRef.offsetHeight;
-            this.$emit('mounted', this.rootHeight);
-        },
-        render() {
-            let rootVnode = h('div', {
-                ref: 'rootRef',
-                class: this.rootCls,
-                style: this.rootStyle,
-            }, this.$slots);
+            });
+            const renderRoot = () => h('div', {
+                ref: rootRef,
+                class: rootCls.value,
+                style: rootStyle.value,
+            }, slots.default && slots.default());
 
-            if (this.sticky && this.stickyType === 'fixed' && this.placeholder) {
-                return h('div', {
-                    style: { height: `${this.rootHeight}px` }
-                }, [rootVnode]);
-            } else {
-                return rootVnode;
-            }
+            onMounted(() => {
+                rootHeight.value = rootRef.value.offsetHeight;
+                emit('mounted', rootHeight.value);
+            });
+
+            return () => {
+                if (props.sticky && props.stickyType === 'fixed' && props.placeholder) {
+                    return h('div', {
+                        style: {
+                            height: `${rootHeight.value}px`
+                        }
+                    }, renderRoot());
+                }
+                return renderRoot();
+            };
         }
     }
 </script>

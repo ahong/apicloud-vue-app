@@ -4,7 +4,7 @@
     <div style="height: 25vh; background-color: #fff">123</div>
     <div @click="navigateToLogin">登录测试页</div>
     <div @click="navigateToImage">静态资源测试页</div>
-    <AvaSafeFooter border sticky-type="fixed" @mounted="onSafeFooterMounted">
+    <AvaSafeFooter :sticky-type="footerStickyType" :placeholder="placeholder" @mounted="onSafeFooterMounted">
         AvaSafeFooter
     </AvaSafeFooter>
 </template>
@@ -20,6 +20,8 @@
             return {
                 position: '',
                 safeHeaderHeight: 0,
+                footerStickyType: 'sticky',
+                placeholder: true,
             };
         },
         computed: {
@@ -32,11 +34,12 @@
         },
         created() {
             setTimeout(() => {
-                this.position = 'top';
+                this.footerStickyType = 'fixed';
+
                 setTimeout(() => {
-                    this.position = 'bottom';
-                }, 3000);
-            }, 10000);
+                    this.placeholder = false;
+                }, 10000);
+            }, 3000);
         },
         methods: {
             onSafeHeaderMounted(height) {

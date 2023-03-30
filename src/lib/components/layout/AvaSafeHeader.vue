@@ -61,7 +61,7 @@
                 ref: rootRef,
                 class: rootCls.value,
                 style: rootStyle.value
-            }, slots.default());
+            }, slots.default && slots.default());
         }
     }
 </script>
