@@ -35,7 +35,6 @@
         created() {
             setTimeout(() => {
                 this.footerStickyType = 'fixed';
-
                 setTimeout(() => {
                     this.placeholder = false;
                 }, 10000);

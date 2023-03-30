@@ -1,5 +1,15 @@
 <!--
     适配顶部状态栏的导航栏
+    Props
+        title：导航栏标题
+        color：导航栏字体、图标颜色，默认为 323233
+        leftArrow：是否显示导航栏默认的左侧箭头
+
+        border：是否显示下边框
+        sticky：是否固定在顶部
+        stickyType：使用 fixed 或 sticky 固定在顶部，默认使用 sticky
+        zIndex：定位层级，默认为 1
+        background：背景，默认为白色背景
     Slots
         left：自定义导航栏左侧内容
         right：自定义导航栏右侧内容
@@ -31,57 +41,61 @@
 </template>
 
 <script>
+    import { computed } from "vue";
     import { navigateBack } from "@/lib/apicloud/route";
     import { isDef } from "@/lib/utils/vue/props";
     export default {
         name: 'AvaSafeNavBar',
         props: {
-            border: Boolean,            // 是否显示下边框
-            sticky: {                   // 是否固定在顶部
+            title: String,
+            color: String,
+            leftArrow: {
                 type: Boolean,
                 default: true
             },
-            stickyType: {               // 使用 fixed 或 sticky 固定在顶部，默认使用 sticky
+            border: Boolean,
+            sticky: {
+                type: Boolean,
+                default: true
+            },
+            stickyType: {
                 validator(val) {
                     return ['fixed', 'sticky'].includes(val);
                 },
                 default: 'sticky'
             },
-            zIndex: [Number, String],   // 定位层级，默认为 1
-            background: String,         // 背景，默认为白色背景
-
-            // NavBar
-            title: String,  // 导航栏标题
-            color: String,  // 导航栏字体、图标颜色，默认为 323233
-            leftArrow: {    // 是否显示导航栏默认的左侧箭头
-                type: Boolean,
-                default: true
-            }
+            zIndex: [Number, String],
+            background: String,
         },
-        computed: {
-            rootCls() {
+        setup(props) {
+            const rootCls = computed(() => {
                 let namespace = 'ava-safe-nav-bar';
                 return {
                     [namespace]: true,
-                    [`${namespace}--hairline`]: this.border,
-                    [`${namespace}--${this.stickyType}`]: this.sticky
+                    [`${namespace}--hairline`]: props.border,
+                    [`${namespace}--${props.stickyType}`]: props.sticky
                 };
-            },
-            rootStyle() {
+            });
+            const rootStyle = computed(() => {
                 let style = {
-                    paddingTop: api.safeArea.top + 'px'
+                    paddingTop: `${api.safeArea.top}px`
                 };
-                if (isDef(this.zIndex)) {
-                    style.zIndex = +this.zIndex;
+                if (isDef(props.zIndex)) {
+                    style.zIndex = +props.zIndex;
                 }
-                if (isDef(this.background)) {
-                    style.background = this.background;
+                if (isDef(props.background)) {
+                    style.background = props.background;
                 }
                 return style;
-            },
-            navBarStyle() {
-                return isDef(this.color) ? { color: this.color } : null;
-            }
+            });
+            const navBarStyle = computed(() => {
+                return isDef(props.color) ? { color: props.color } : null;
+            });
+            return {
+                rootCls,
+                rootStyle,
+                navBarStyle,
+            };
         },
         created() {
             if (this.$attrs.onNavigateBack) {
