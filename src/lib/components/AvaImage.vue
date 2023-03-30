@@ -24,8 +24,6 @@
         contain：保持宽高比缩放图片，使图片的长边能完全显示出来
         none：保持图片原有尺寸
         scale-down：取 none 或 contain 中较小的一个
-
-        2. ava-icon
 -->
 <template>
     <div class="ava-image" :style="rootStyle">
@@ -33,12 +31,12 @@
 
         <div v-if="showLoading && isLoading" class="ava-image-status">
             <slot name="loading">
-                <i class="ava-icon ava-icon-arrow-right ava-image-status-icon"></i>
+                <AvaIcon name="arrow-right" class="ava-image-status-icon"></AvaIcon>
             </slot>
         </div>
         <div v-if="showError && isError" class="ava-image-status">
             <slot name="error">
-                <i class="ava-icon ava-icon-arrow-left ava-image-status-icon"></i>
+                <AvaIcon name="arrow-left" class="ava-image-status-icon"></AvaIcon>
             </slot>
         </div>
 
@@ -48,10 +46,13 @@
 </template>
 
 <script>
+    import AvaIcon from "@/lib/components/AvaIcon";
     import { addUnit } from "@/lib/utils/dom/style";
     import { isDef } from "@/lib/utils/vue/props";
     export default {
         name: "AvaImage",
+        components: { AvaIcon },
+        emits: ['load', 'error'],
         props: {
             src: String,
             alt: String,
@@ -115,7 +116,6 @@
         },
         methods: {
             setSrc() {
-                let a = new Date();
                 if (this.src && this.cache) {
                     if (!this.src.startsWith('http')) {
                         // 非远程地址直接使用原地址

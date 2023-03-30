@@ -1,19 +1,21 @@
 <template>
     <AvaSafeNavBar title="图片资源页"></AvaSafeNavBar>
     <div>123</div>
-    <AvaImage :src="logoURL" width="100" height="100" cache @click="onClickAvaImage"></AvaImage>
+    <AvaImage :src="'1.png'" width="100" height="100" cache @click="onClickAvaImage"></AvaImage>
     <br>
+    <AvaIcon name="arrow-up" size="100" color="red"></AvaIcon>
     <img :src="logoURL" alt="">
     <br>
     <div class="logo"></div>
 </template>
 
 <script>
+    import AvaIcon from "@/lib/components/AvaIcon";
     import AvaImage from "@/lib/components/AvaImage";
     import AvaSafeNavBar from "@/lib/components/layout/AvaSafeNavBar";
     export default {
         name: "image",
-        components: { AvaImage, AvaSafeNavBar },
+        components: { AvaIcon, AvaImage, AvaSafeNavBar },
         computed: {
             logoURL() {
                 return `${this.publicPath}/image/logo.png`;
