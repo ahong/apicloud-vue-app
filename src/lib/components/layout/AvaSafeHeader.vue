@@ -11,14 +11,8 @@
     Events
         mounted：组件挂载时触发，返回组件的高度
 -->
-<template>
-    <div :class="rootCls" :style="rootStyle" ref="rootRef">
-        <slot></slot>
-    </div>
-</template>
-
 <script>
-    import { ref, computed, onMounted } from "vue";
+    import { ref, computed, onMounted, h } from "vue";
     import { isDef } from "@/lib/utils/vue/props";
     export default {
         name: "AvaSafeHeader",
@@ -38,8 +32,8 @@
             zIndex: [Number, String],
             background: String
         },
-        setup(props, { emit }) {
-            const rootRef = ref(null);
+        setup(props, { slots, emit }) {
+            const rootRef = ref();
             const rootCls = computed(() => {
                 let namespace = 'ava-safe-header';
                 return {
@@ -63,7 +57,11 @@
             onMounted(() => {
                 emit('mounted', rootRef.value.offsetHeight);
             });
-            return { rootRef, rootCls, rootStyle };
+            return () => h('div', {
+                ref: rootRef,
+                class: rootCls.value,
+                style: rootStyle.value
+            }, slots.default());
         }
     }
 </script>
