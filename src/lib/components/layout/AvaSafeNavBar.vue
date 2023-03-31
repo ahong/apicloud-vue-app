@@ -78,18 +78,18 @@
             });
             const rootStyle = computed(() => {
                 let style = {
-                    paddingTop: `${api.safeArea.top}px`
+                    paddingTop: `${api.safeArea.top}px`,
+                    background: props.background
                 };
                 if (isDef(props.zIndex)) {
                     style.zIndex = +props.zIndex;
                 }
-                if (isDef(props.background)) {
-                    style.background = props.background;
-                }
                 return style;
             });
             const navBarStyle = computed(() => {
-                return isDef(props.color) ? { color: props.color } : null;
+                return {
+                    color: props.color
+                };
             });
             return {
                 rootCls,

@@ -25,6 +25,7 @@
                         paddingBottom: `${api.safeArea.bottom}px`
                     };
                 }
+                return null;
             });
             return () => h('div', {
                 style: rootStyle.value

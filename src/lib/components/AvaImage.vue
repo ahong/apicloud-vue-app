@@ -97,7 +97,7 @@
                 return style;
             },
             imgStyle() {
-                return isDef(this.fit) ? { objectFit: this.fit } : null;
+                return { objectFit: this.fit };
             },
             showBadge() {
                 return isDef(this.badge) && this.badge !== '';
@@ -117,7 +117,7 @@
         methods: {
             setRenderSrc() {
                 if (this.src && this.cache) {
-                    if (!this.src.startsWith('http')) {
+                    if (this.src.indexOf('http') !== 0) {
                         // 非远程地址直接使用原地址
                         this.renderSrc = this.src;
                         return;

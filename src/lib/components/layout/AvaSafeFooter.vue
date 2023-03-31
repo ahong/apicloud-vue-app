@@ -47,13 +47,11 @@
             });
             const rootStyle = computed(() => {
                 let style = {
-                    paddingBottom: api.safeArea.bottom + 'px'
+                    paddingBottom: api.safeArea.bottom + 'px',
+                    background: props.background
                 };
                 if (isDef(props.zIndex)) {
                     style.zIndex = +props.zIndex;
-                }
-                if (isDef(props.background)) {
-                    style.background = props.background;
                 }
                 return style;
             });
