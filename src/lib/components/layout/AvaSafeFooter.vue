@@ -6,7 +6,7 @@
         stickyType：使用 fixed 或 sticky 固定在底部，默认使用 sticky
         zIndex：定位层级，默认为 1
         background：背景，默认为白色背景
-        placeholder：使用 fixed 固定在底部时，是否在标签位置生成一个等高的占位元素
+        placeholder：是否在标签位置生成一个等高的占位元素，这在 fixed 定位时可能有用
     Slots
         default：内容
     Events
@@ -67,7 +67,7 @@
             });
 
             return () => {
-                if (props.sticky && props.stickyType === 'fixed' && props.placeholder) {
+                if (props.placeholder) {
                     return h('div', {
                         style: {
                             height: `${rootHeight.value}px`
