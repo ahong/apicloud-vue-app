@@ -2,7 +2,7 @@
  * 组件共享的 Props：
  *  AvaSafeHeader、AvaSafeFooter、AvaSafeNavBar
  */
-export const SharedProps = {
+export const sharedProps = {
     border: Boolean,
     sticky: {
         type: Boolean,

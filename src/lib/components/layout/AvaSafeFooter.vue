@@ -15,11 +15,11 @@
 <script>
     import { ref, computed, onMounted, h } from "vue";
     import { isDef } from "@/lib/utils/vue/props";
-    import { SharedProps } from "./shared";
+    import { sharedProps } from "./shared";
     export default {
         name: "AvaSafeFooter",
         emits: ['mounted'],
-        props: Object.assign({}, SharedProps, {
+        props: Object.assign({}, sharedProps, {
             placeholder: Boolean
         }),
         setup(props, { emit, slots }) {

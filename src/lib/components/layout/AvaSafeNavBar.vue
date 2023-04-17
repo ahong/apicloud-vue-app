@@ -43,10 +43,10 @@
     import { computed } from "vue";
     import { navigateBack } from "@/lib/apicloud/route";
     import { isDef } from "@/lib/utils/vue/props";
-    import { SharedProps } from "./shared";
+    import { sharedProps } from "./shared";
     export default {
         name: 'AvaSafeNavBar',
-        props: Object.assign({}, SharedProps, {
+        props: Object.assign({}, sharedProps, {
             title: String,
             color: String,
             leftArrow: {
