@@ -35,7 +35,7 @@
         setup(props, { slots, emit }) {
             const rootRef = ref();
             const rootCls = computed(() => {
-                let namespace = 'ava-safe-header';
+                const namespace = 'ava-safe-header';
                 return {
                     [namespace]: true,
                     [`${namespace}--hairline`]: props.border,
@@ -43,7 +43,7 @@
                 };
             });
             const rootStyle = computed(() => {
-                let style = {
+                const style = {
                     paddingTop: api.safeArea.top + 'px',
                     background: props.background
                 };

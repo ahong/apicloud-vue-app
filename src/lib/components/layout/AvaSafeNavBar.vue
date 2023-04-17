@@ -69,7 +69,7 @@
         },
         setup(props) {
             const rootCls = computed(() => {
-                let namespace = 'ava-safe-nav-bar';
+                const namespace = 'ava-safe-nav-bar';
                 return {
                     [namespace]: true,
                     [`${namespace}--hairline`]: props.border,
@@ -77,7 +77,7 @@
                 };
             });
             const rootStyle = computed(() => {
-                let style = {
+                const style = {
                     paddingTop: `${api.safeArea.top}px`,
                     background: props.background
                 };

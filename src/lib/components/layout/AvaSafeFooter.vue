@@ -38,7 +38,7 @@
             const rootRef = ref();
             const rootHeight = ref(0);
             const rootCls = computed(() => {
-                let namespace = 'ava-safe-footer';
+                const namespace = 'ava-safe-footer';
                 return {
                     [namespace]: true,
                     [`${namespace}--hairline`]: props.border,
@@ -46,7 +46,7 @@
                 };
             });
             const rootStyle = computed(() => {
-                let style = {
+                const style = {
                     paddingBottom: api.safeArea.bottom + 'px',
                     background: props.background
                 };
