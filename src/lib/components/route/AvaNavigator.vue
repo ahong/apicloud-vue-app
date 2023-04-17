@@ -27,7 +27,7 @@
             options: Object
         },
         setup(props, { slots }) {
-            let children = slots.default && slots.default();
+            const children = slots.default && slots.default();
             function onClick() {
                 if (props.type === 'navigateBack') {
                     Route.navigateBack(props.options);
