@@ -4,7 +4,6 @@
         title：导航栏标题
         color：导航栏字体、图标颜色，默认为 323233
         leftArrow：是否显示导航栏默认的左侧箭头
-
         border：是否显示下边框
         sticky：是否固定在顶部
         stickyType：使用 fixed 或 sticky 固定在顶部，默认使用 sticky
@@ -44,29 +43,17 @@
     import { computed } from "vue";
     import { navigateBack } from "@/lib/apicloud/route";
     import { isDef } from "@/lib/utils/vue/props";
+    import { SharedProps } from "./shared";
     export default {
         name: 'AvaSafeNavBar',
-        props: {
+        props: Object.assign({}, SharedProps, {
             title: String,
             color: String,
             leftArrow: {
                 type: Boolean,
                 default: true
-            },
-            border: Boolean,
-            sticky: {
-                type: Boolean,
-                default: true
-            },
-            stickyType: {
-                validator(val) {
-                    return ['fixed', 'sticky'].includes(val);
-                },
-                default: 'sticky'
-            },
-            zIndex: [Number, String],
-            background: String,
-        },
+            }
+        }),
         setup(props) {
             const rootCls = computed(() => {
                 const namespace = 'ava-safe-nav-bar';

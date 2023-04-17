@@ -15,25 +15,13 @@
 <script>
     import { ref, computed, onMounted, h } from "vue";
     import { isDef } from "@/lib/utils/vue/props";
+    import { SharedProps } from "./shared";
     export default {
-        name: "AvaSafeBottom",
+        name: "AvaSafeFooter",
         emits: ['mounted'],
-        props: {
-            border: Boolean,
-            sticky: {
-                type: Boolean,
-                default: true
-            },
-            stickyType: {
-                validator(value) {
-                    return ['fixed', 'sticky'].includes(value);
-                },
-                default: 'sticky'
-            },
-            zIndex: [Number, String],
-            background: String,
+        props: Object.assign({}, SharedProps, {
             placeholder: Boolean
-        },
+        }),
         setup(props, { emit, slots }) {
             const rootRef = ref();
             const rootHeight = ref(0);

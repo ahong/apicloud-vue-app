@@ -14,24 +14,11 @@
 <script>
     import { ref, computed, onMounted, h } from "vue";
     import { isDef } from "@/lib/utils/vue/props";
+    import { SharedProps } from "./shared";
     export default {
         name: "AvaSafeHeader",
         emits: ['mounted'],
-        props: {
-            border: Boolean,
-            sticky: {
-                type: Boolean,
-                default: true
-            },
-            stickyType: {
-                validator(value) {
-                    return ['fixed', 'sticky'].includes(value);
-                },
-                default: 'sticky'
-            },
-            zIndex: [Number, String],
-            background: String
-        },
+        props: Object.assign({}, SharedProps),
         setup(props, { slots, emit }) {
             const rootRef = ref();
             const rootCls = computed(() => {
