@@ -15,8 +15,8 @@ module.exports = defineConfig({
   // 取消生成环境的 source map
   productionSourceMap: false,
 
-  // 对 node_modules 下的依赖进行转译
-  transpileDependencies: true,
+  // babel-loader 忽略 node_modules 中的依赖，需要时可自行修改
+  transpileDependencies: false,
 
   // 多页面应用
   pages: Object.entries(pages).reduce((pages, [key, page]) => {
