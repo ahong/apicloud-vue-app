@@ -91,6 +91,15 @@ module.exports = defineConfig({
       ]
     });
 
+    // 生成环境下移除 console 和 debugger
+    config.optimization.minimizer('terser').tap((args) => {
+      if (isProd) {
+        args[0].terserOptions.compress.drop_console = true;
+        args[0].terserOptions.compress.drop_debugger = true;
+      }
+      return args;
+    });
+
     // 拷贝 vue 的运行版本到 dist/script/vue 下，为了在页面上用 script 标签引入
     config.plugin('copy').tap((args) => {
       args[0].patterns.push({
