@@ -19,7 +19,10 @@
   ],
   "scripts": {
     "dev": "vue-cli-service build --no-module --watch",
-    "build": "vue-cli-service build --no-module"
+    "build": "vue-cli-service build --no-module",
+    "lint": "vue-cli-service lint",
+    "report": "vue-cli-service build --no-module --report",
+    "report-json": "vue-cli-service build --no-module --report-json"
   },
   "dependencies": {
     "core-js": "^3.8.3",
