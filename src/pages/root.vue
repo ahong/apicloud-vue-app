@@ -39,6 +39,15 @@
                     this.placeholder = false;
                 }, 10000);
             }, 3000);
+
+            Promise.allSettled([
+                Promise.resolve(),
+                Promise.reject()
+            ]).then(() => {
+                this.a = 'testResolve';
+            }).catch(() => {
+                this.b = 'testReject';
+            });
         },
         methods: {
             onSafeHeaderMounted(height) {
