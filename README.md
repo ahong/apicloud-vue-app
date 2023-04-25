@@ -151,23 +151,23 @@ export {
 
 静态资源如图片、视频、音频等统一放置在 public 目录下，它们将会直接被拷贝到输出目录 dist 中。
 
-#### 使用绝对路径
+#### 绝对路径
 
-- APICloud 提供的接口可以使用绝对路径如 `widget://` 引用静态资源。
-- iOS 系统支持、但 Android 系统不支持在 HTML 标签、CSS 样式表中使用 `widget://` 绝对路径引用静态资源，应该使用后面两种相对路径的方式。
+- APICloud API：支持绝对路径如 `widget://` 引用静态资源。
+- HTML标签、CSS样式表：iOS支持、Android不支持使用 `widget://` 绝对路径引用静态资源，推荐使用相对路径的方式。
 
-#### 使用 publicPath
+#### 相对路径：publicPath
 
 > 框架提供了 publicPath 变量，它是当前页面访问 public 文件夹的相对路径
 >
-> 方式一：应用内的所有 vue 组件通过 this.publicPath 访问
+> 方式一：vue 组件通过 this.$publicPath 访问
 >
 > 方式二：通过 window.publicPath 访问
 
 ```vue
 <template>
 	<!-- 在模板中使用 -->
-	<img :src="`${publicPath}/image/logo.png`" alt="">
+	<img :src="`${$publicPath}/image/logo.png`" alt="">
 </template>
 
 <script>
@@ -175,10 +175,10 @@ export {
         computed: {
             logoURL() {
                 // 在实例 API 中使用
-                return `${this.publicPath}/image/logo.png`;
+                return `${this.$publicPath}/image/logo.png`;
             },
             logoBackground() {
-                return `url('${this.publicPath}/image/logo.png')`;
+                return `url('${this.$publicPath}/image/logo.png')`;
             }
         }
     }
@@ -192,7 +192,7 @@ export {
 </style>
 ```
 
-#### 明确相对路径
+#### 相对路径：明确相对层级
 
 > 1. 在 vue 页面中，可根据 vue 文件相对 src 目录的层级明确使用相对路径。
 > 2. 在非 vue 页面中（vue 组件、js 文件等可能会被多个页面同时引用的文件），推荐使用 publicPath 变量

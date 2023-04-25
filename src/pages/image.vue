@@ -1,6 +1,8 @@
 <template>
     <AvaSafeNavBar title="图片资源页"></AvaSafeNavBar>
     <div>123</div>
+    <AvaImage :src="`${$publicPath}/image/logo.png`"></AvaImage>
+    <br>
     <AvaImage width="100" height="100" cache @click="onClickAvaImage"></AvaImage>
     <br>
     <AvaIcon name="arrow-up" size="100" color="red"></AvaIcon>
@@ -18,10 +20,10 @@
         components: { AvaIcon, AvaImage, AvaSafeNavBar },
         computed: {
             logoURL() {
-                return `${this.publicPath}/image/logo.png`;
+                return `${this.$publicPath}/image/logo.png`;
             },
             logoBackground() {
-                return `url('${this.publicPath}/image/logo.png')`;
+                return `url('${this.$publicPath}/image/logo.png')`;
             }
         },
         methods: {
