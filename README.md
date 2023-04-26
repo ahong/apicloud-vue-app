@@ -344,3 +344,4 @@ module.exports = {
 1. 困惑：browserslist 中配置的浏览器是支持箭头函数的，为什么打包后要把箭头函数进行编译
 2. 困惑：修改 browserslist 后，打包后为什么还会有 const 语法
 3. 使用 webpack 构建，不使用 vue-cli
+3. 加入 apicloud-cli，可以实时开发与同步
