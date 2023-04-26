@@ -3,7 +3,7 @@
  * Tip：页面跳转使用的是 openTabLayout，关于 openFrame、openFrameGroup 需自行实现
  */
 import ava from "@/ava.json";
-import { isObject } from "@/lib/utils/validate/data-type/is-object";
+import { isObject } from "@/lib/utils/validate";
 
 /**
  * 保留当前页面，跳转到应用内的某个页面

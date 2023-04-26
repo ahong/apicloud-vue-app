@@ -1,4 +1,4 @@
-import { isObject } from "@/lib/utils/validate/data-type/is-object";
+import { isObject } from "@/lib/utils/validate";
 const DEFAULT_CONFIRM_TEXT = '确定';
 const DEFAULT_CANCEL_TEXT = '取消';
 

@@ -1,4 +1,4 @@
-import { isPlainObject } from "@/lib/utils/validate/data-type/is-object";
+import { isPlainObject } from "@/lib/utils/validate/is-object";
 
 /**
  * 检测应用是否已取得某个或多个权限

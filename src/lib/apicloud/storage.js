@@ -1,4 +1,4 @@
-import { isPlainObject } from "@/lib/utils/validate/data-type/is-object";
+import { isObject } from "@/lib/utils/validate";
 
 /**
  * 设置偏好数据
@@ -7,7 +7,7 @@ import { isPlainObject } from "@/lib/utils/validate/data-type/is-object";
  * @param value {String} 偏好数据的值，当 key 为 String 时有效
  */
 export function setPrefs(key, value) {
-    if (isPlainObject(key)) {
+    if (isObject(key)) {
         for (let [k, v] of Object.entries(key)) {
             api.setPrefs({ key: k, value: v });
         }
@@ -71,7 +71,7 @@ export const Prefs = {
  * @param value {String} 全局数据的值，当 key 为 String 时有效
  */
 export function setGlobalData(key, value) {
-    if (isPlainObject(key)) {
+    if (isObject(key)) {
         for (let [k, v] of Object.entries(key)) {
             api.setGlobalData({ key: k, value: v });
         }

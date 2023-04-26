@@ -1,24 +1,3 @@
-// 是否支持 touch 触摸事件
-const SUPPORT_TOUCH = (window.navigator.maxTouchPoints > 0) || 'ontouchstart' in window;
-
-// 是否支持事件监听器参数 passive
-// 提升移动端性能、告诉浏览器不想阻止事件的默认行为（listener 永远不会调用 preventDefault 方法）
-const SUPPORT_TOUCH_PASSIVE_LISTENER = (function () {
-    let support = false;
-    try {
-        let options = Object.defineProperty({}, 'passive', {
-            get() {
-                support = true;
-            }
-        });
-        window.addEventListener('test', null, options);
-        window.removeEventListener('test', null, options);
-    } catch (e) {
-        /* no support：不支持 Object.defineProperty 或 addEventListener、removeEventListener */
-    }
-    return support;
-}());
-
 // 需要 passive 的 touch 事件
 const TOUCH_PASSIVE_EVENTS = ['touchstart', 'touchmove'];
 
@@ -42,7 +21,7 @@ export function on(target, type, listener, options) {
     }
     if (options === void 0) {
         // 默认使用冒泡事件监听器、支持 passive 将其设为 true
-        if (SUPPORT_TOUCH_PASSIVE_LISTENER && TOUCH_PASSIVE_EVENTS.indexOf(type) > -1) {
+        if (TOUCH_PASSIVE_EVENTS.indexOf(type) > -1) {
             options = {
                 passive: true,
                 capture: false,

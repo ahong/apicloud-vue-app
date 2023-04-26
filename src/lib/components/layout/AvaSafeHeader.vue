@@ -13,7 +13,7 @@
 -->
 <script>
     import { ref, computed, onMounted, h } from "vue";
-    import { isDef } from "@/lib/utils/vue/props";
+    import { isDef } from "@/lib/utils/validate";
     import { sharedProps } from "./shared";
     export default {
         name: "AvaSafeHeader",

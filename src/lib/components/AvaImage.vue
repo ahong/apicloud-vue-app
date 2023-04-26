@@ -47,8 +47,8 @@
 
 <script>
     import AvaIcon from "@/lib/components/AvaIcon";
-    import { addUnit } from "@/lib/utils/dom/style";
-    import { isDef } from "@/lib/utils/vue/props";
+    import { isDef } from "@/lib/utils/validate";
+    import { addUnit } from "@/lib/utils/web-api/style";
     export default {
         name: "AvaImage",
         components: { AvaIcon },

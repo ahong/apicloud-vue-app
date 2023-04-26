@@ -42,7 +42,7 @@
 <script>
     import { computed } from "vue";
     import { navigateBack } from "@/lib/apicloud/route";
-    import { isDef } from "@/lib/utils/vue/props";
+    import { isDef } from "@/lib/utils/validate";
     import { sharedProps } from "./shared";
     export default {
         name: 'AvaSafeNavBar',

@@ -9,7 +9,7 @@
 -->
 <script>
     import { computed, h } from "vue";
-    import { addUnit } from "@/lib/utils/dom/style";
+    import { addUnit } from "@/lib/utils/web-api/style";
     export default {
         name: "AvaIcon",
         props: {
