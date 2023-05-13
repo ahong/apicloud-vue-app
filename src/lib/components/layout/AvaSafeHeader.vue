@@ -14,11 +14,11 @@
 <script>
     import { ref, computed, onMounted, h } from "vue";
     import { isDef } from "@/lib/utils/validate";
-    import { sharedProps } from "./shared";
+    import { safeAreaSharedProps } from "./shared";
     export default {
         name: "AvaSafeHeader",
         emits: ['mounted'],
-        props: Object.assign({}, sharedProps),
+        props: Object.assign({}, safeAreaSharedProps),
         setup(props, { slots, emit }) {
             const rootRef = ref();
             const rootCls = computed(() => {
