@@ -2,7 +2,7 @@
  * 判断值是否为数字型，包括字符串数字如 '3.14'
  */
 function isNumeric(value) {
-    return /^\d+(.\d+)?$/.test(value);
+    return /^-?\d+(.\d+)?$/.test(value);
 }
 
 /**

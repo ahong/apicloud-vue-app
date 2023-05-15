@@ -1,15 +1,9 @@
 import { isNumeric } from "@/lib/utils/validate";
 
 /**
- * 添加 CSS 样式值单位：数字型的值默认添加 px 单位
- */
-export function addUnit(value) {
-    return isNumeric(value) ? `${value}px` : value;
-}
-
-/**
- * 创建 BEM 类名空间
- * Tip：CSS BEM 命名规范 https://getbem.com/
+ * 给基础名带上修饰符
+ * @param {String} name 基础名
+ * @param {String|Array|Object} mods 修饰符
  */
 function genMods(name, mods) {
     if (!mods) {
@@ -33,6 +27,11 @@ function genMods(name, mods) {
         return acc + (mods[mod] ? genMods(name, mod) : '');
     }, '');
 }
+
+/**
+ * 创建 BEM 空间
+ * @param {String} name 空间名
+ */
 export function createBEM(name) {
     return (el, mods) => {
         if (el && typeof el !== 'string') {
@@ -42,4 +41,11 @@ export function createBEM(name) {
         el = el ? `${name}__${el}` : name;
         return `${el}${genMods(el, mods)}`;
     };
+}
+
+/**
+ * 添加 CSS 样式值单位：数字型的值默认添加 px 单位
+ */
+export function addUnit(value) {
+    return isNumeric(value) ? `${value}px` : value;
 }
