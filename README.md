@@ -1,5 +1,9 @@
 # apicloud-vue-app
 
+> For Vue3：主分支
+>
+> For Vue2：见 2.x-vue2 分支
+
 > Vue Cli 版本：5.0.8
 >
 > Node 版本：18.13.0
@@ -10,8 +14,6 @@
 > [Vue3](https://cn.vuejs.org/) / [Vue Cli](https://cli.vuejs.org/)
 >
 > [APICloud 开发者文档](https://docs.apicloud.com/) / [config.xml 配置文档](https://docs.apicloud.com/Dev-Guide/app-config-manual) / [api 接口文档](https://docs.apicloud.com/Client-API/api)
-
-> For Vue2：见 2.x-vue2 分支
 
 
 
