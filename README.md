@@ -11,6 +11,8 @@
 >
 > [APICloud 开发者文档](https://docs.apicloud.com/) / [config.xml 配置文档](https://docs.apicloud.com/Dev-Guide/app-config-manual) / [api 接口文档](https://docs.apicloud.com/Client-API/api)
 
+> For Vue2：见 2.x-vue2 分支
+
 
 
 ## 介绍
