@@ -12,41 +12,40 @@
         mounted：组件挂载时触发，返回组件的高度
 -->
 <script>
-    import { ref, computed, onMounted, h } from "vue";
     import { isDef } from "@/lib/utils/validate";
     import { safeAreaSharedProps } from "./shared";
     export default {
         name: "AvaSafeHeader",
-        emits: ['mounted'],
         props: Object.assign({}, safeAreaSharedProps),
-        setup(props, { slots, emit }) {
-            const rootRef = ref();
-            const rootCls = computed(() => {
+        computed: {
+            rootCls() {
                 const namespace = 'ava-safe-header';
                 return {
                     [namespace]: true,
-                    [`${namespace}--hairline`]: props.border,
-                    [`${namespace}--${props.stickyType}`]: props.sticky
+                    [`${namespace}--hairline`]: this.border,
+                    [`${namespace}--${this.stickyType}`]: this.sticky
                 };
-            });
-            const rootStyle = computed(() => {
+            },
+            rootStyle() {
                 const style = {
                     paddingTop: api.safeArea.top + 'px',
-                    background: props.background
+                    background: this.background
                 };
-                if (isDef(props.zIndex)) {
-                    style.zIndex = +props.zIndex;
+                if (isDef(this.zIndex)) {
+                    style.zIndex = +this.zIndex;
                 }
                 return style;
-            });
-            onMounted(() => {
-                emit('mounted', rootRef.value.offsetHeight);
-            });
-            return () => h('div', {
-                ref: rootRef,
-                class: rootCls.value,
-                style: rootStyle.value
-            }, slots.default && slots.default());
+            }
+        },
+        mounted() {
+            this.$emit('mounted', this.$refs.rootRef.offsetHeight);
+        },
+        render(h) {
+            return h('div', {
+                ref: 'rootRef',
+                class: this.rootCls,
+                style: this.rootStyle
+            }, this.$slots.default);
         }
     }
 </script>

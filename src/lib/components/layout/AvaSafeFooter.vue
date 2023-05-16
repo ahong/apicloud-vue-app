@@ -13,57 +13,57 @@
         mounted：组件挂载时触发，返回组件的高度
 -->
 <script>
-    import { ref, computed, onMounted, h } from "vue";
     import { isDef } from "@/lib/utils/validate";
     import { safeAreaSharedProps } from "./shared";
     export default {
         name: "AvaSafeFooter",
-        emits: ['mounted'],
         props: Object.assign({}, safeAreaSharedProps, {
             placeholder: Boolean
         }),
-        setup(props, { emit, slots }) {
-            const rootRef = ref();
-            const rootHeight = ref(0);
-            const rootCls = computed(() => {
+        data() {
+            return {
+                rootHeight: 0
+            };
+        },
+        computed: {
+            rootCls() {
                 const namespace = 'ava-safe-footer';
                 return {
                     [namespace]: true,
-                    [`${namespace}--hairline`]: props.border,
-                    [`${namespace}--${props.stickyType}`]: props.sticky
+                    [`${namespace}--hairline`]: this.border,
+                    [`${namespace}--${this.stickyType}`]: this.sticky
                 };
-            });
-            const rootStyle = computed(() => {
+            },
+            rootStyle() {
                 const style = {
                     paddingBottom: api.safeArea.bottom + 'px',
-                    background: props.background
+                    background: this.background
                 };
-                if (isDef(props.zIndex)) {
-                    style.zIndex = +props.zIndex;
+                if (isDef(this.zIndex)) {
+                    style.zIndex = +this.zIndex;
                 }
                 return style;
-            });
-            const renderRoot = () => h('div', {
-                ref: rootRef,
-                class: rootCls.value,
-                style: rootStyle.value,
-            }, slots.default && slots.default());
+            }
+        },
+        mounted() {
+            this.rootHeight = this.$refs.rootRef.offsetHeight;
+            this.$emit('mounted', this.rootHeight);
+        },
+        render(h) {
+            const rootVNode = h('div', {
+                ref: 'rootRef',
+                class: this.rootCls,
+                style: this.rootStyle,
+            }, this.$slots.default);
 
-            onMounted(() => {
-                rootHeight.value = rootRef.value.offsetHeight;
-                emit('mounted', rootHeight.value);
-            });
-
-            return () => {
-                if (props.placeholder) {
-                    return h('div', {
-                        style: {
-                            height: `${rootHeight.value}px`
-                        }
-                    }, renderRoot());
-                }
-                return renderRoot();
-            };
+            if (this.placeholder) {
+                return h('div', {
+                    style: {
+                        height: `${this.rootHeight}px`
+                    }
+                }, [rootVNode]);
+            }
+            return rootVNode;
         }
     }
 </script>

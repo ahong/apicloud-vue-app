@@ -233,7 +233,7 @@ lib
   ├─apicloud	基于 APICloud 接口进行封装的模块
   │  └─modules	基于 APICloud 的 modules 进行封装
   ├─components	内置的 vue 组件
-  ├─composables	内置的 vue 组合式 API
+  ├─mixins		内置的 vue mixins
   └─utils       工具函数
 ```
 
@@ -258,19 +258,18 @@ lib
 - layout/AvaSafeFooter：适配底部安全区的底部
 - layout/AvaSafeNavBar：适配顶部状态栏的导航栏
 
-#### composables
+#### mixins
 
-- usePageParam：页面参数
+- PageParamMixin：页面参数
 
 ```javascript
-import { usePageParam } from "@/lib/composables/use-page-param";
+import { PageParamMixin } from "@/lib/mixins/page-param";
 export default {
-    setup() {
-        const pageParam = usePageParam({
-            message: '这里是默认参数'
-        });
+    data() {
         return {
-            pageParam
+            pageParam: {
+                message: '这里是默认参数'
+            }
         };
     }
 }

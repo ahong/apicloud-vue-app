@@ -9,7 +9,7 @@
     <meta name="keywords" content="<%= htmlWebpackPlugin.options.title %>">
     <meta name="description" content="<%= htmlWebpackPlugin.options.title %>">
     <link rel="stylesheet" href="<%= htmlWebpackPlugin.options.publicPath %>/css/common.css">
-    <script src="<%= htmlWebpackPlugin.options.publicPath %>/script/vue/vue.runtime.global<%= NODE_ENV === 'production' ? '.prod' : '' %>.js"></script>
+    <script src="<%= htmlWebpackPlugin.options.publicPath %>/script/vue/vue.runtime<%= NODE_ENV === 'production' ? '.min' : '' %>.js"></script>
 </head>
 <body>
     <div id="page"></div>
@@ -34,9 +34,8 @@
                 });
             }
 
-            var app = Vue.createApp(window.PageComponent);
-            app.config.globalProperties.$publicPath = window.publicPath = '<%= htmlWebpackPlugin.options.publicPath %>';
-            app.mount('#page');
+            Vue.prototype.$publicPath = window.publicPath = '<%= htmlWebpackPlugin.options.publicPath %>';
+            new (Vue.extend(window.PageComponent))().$mount('#page');
         }
     </script>
 </body>

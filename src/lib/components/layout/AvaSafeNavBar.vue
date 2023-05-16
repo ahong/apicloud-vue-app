@@ -40,7 +40,6 @@
 </template>
 
 <script>
-    import { computed } from "vue";
     import { navigateBack } from "@/lib/apicloud/route";
     import { isDef } from "@/lib/utils/validate";
     import { safeAreaSharedProps } from "./shared";
@@ -54,39 +53,35 @@
                 default: true
             }
         }),
-        setup(props) {
-            const rootCls = computed(() => {
+        computed: {
+            rootCls() {
                 const namespace = 'ava-safe-nav-bar';
                 return {
                     [namespace]: true,
-                    [`${namespace}--hairline`]: props.border,
-                    [`${namespace}--${props.stickyType}`]: props.sticky
+                    [`${namespace}--hairline`]: this.border,
+                    [`${namespace}--${this.stickyType}`]: this.sticky
                 };
-            });
-            const rootStyle = computed(() => {
+            },
+            rootStyle() {
                 const style = {
                     paddingTop: `${api.safeArea.top}px`,
-                    background: props.background
+                    background: this.background
                 };
-                if (isDef(props.zIndex)) {
-                    style.zIndex = +props.zIndex;
+                if (isDef(this.zIndex)) {
+                    style.zIndex = +this.zIndex;
                 }
                 return style;
-            });
-            const navBarStyle = computed(() => {
+            },
+            navBarStyle() {
                 return {
-                    color: props.color
+                    color: this.color
                 };
-            });
-            return {
-                rootCls,
-                rootStyle,
-                navBarStyle,
-            };
+            }
         },
         created() {
-            if (this.$attrs.onNavigateBack) {
-                api.addEventListener({ name: 'keyback' }, this.$attrs.onNavigateBack);
+            const onNavigateBack = this.$listeners['navigate-back'];
+            if (onNavigateBack) {
+                api.addEventListener({ name: 'keyback' }, onNavigateBack);
             }
         },
         mounted() {
@@ -94,7 +89,7 @@
         },
         methods: {
             onClickLeftArrow() {
-                let { onNavigateBack } = this.$attrs;
+                const onNavigateBack = this.$listeners['navigate-back'];
                 if (onNavigateBack) {
                     onNavigateBack();
                 } else {

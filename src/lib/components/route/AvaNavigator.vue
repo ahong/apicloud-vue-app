@@ -7,7 +7,6 @@
         options：路由方法需要的 options 参数，具体见 route.js
 -->
 <script>
-    import { h } from "vue";
     import * as Route from "@/lib/apicloud/route";
     export default {
         name: "AvaNavigator",
@@ -26,16 +25,21 @@
             name: String,
             options: Object
         },
-        setup(props, { slots }) {
-            const children = slots.default && slots.default();
-            function onClick() {
-                if (props.type === 'navigateBack') {
-                    Route.navigateBack(props.options);
+        methods: {
+            onClick() {
+                if (this.type === 'navigateBack') {
+                    Route.navigateBack(this.options);
                 } else {
-                    Route[props.type](props.name, props.options);
+                    Route[this.type](this.name, this.options);
                 }
             }
-            return () => h(this.tag, { onClick }, children);
+        },
+        render(h) {
+            return h(this.tag, {
+                on: {
+                    click: this.onClick
+                }
+            }, this.$slots.default);
         }
     }
 </script>

@@ -103,7 +103,7 @@ module.exports = defineConfig({
     // 拷贝 vue 的运行版本到 dist/script/vue 下，为了在页面上用 script 标签引入
     config.plugin('copy').tap((args) => {
       args[0].patterns.push({
-        from: Path.resolve(__dirname, `node_modules/vue/dist/vue.runtime.global${isProd ? '.prod' : ''}.js`),
+        from: Path.resolve(__dirname, `node_modules/vue/dist/vue.runtime${isProd ? '.min' : ''}.js`),
         to: 'script/vue'
       });
       return args;

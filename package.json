@@ -1,6 +1,6 @@
 {
   "name": "apicloud-vue-app",
-  "version": "2.0.5",
+  "version": "2.0.5-vue2",
   "description": "基于 Vue 开发 APICloud App 的解决方案（Solution for developing APICloud App based on Vue）",
   "author": "ahong <1002363357@qq.com> (https://github.com/ahong)",
   "license": "MIT",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "vue": "^2.6.14"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -39,6 +39,7 @@
     "less": "^4.0.0",
     "less-loader": "^8.0.0",
     "style-resources-loader": "^1.5.0",
-    "vconsole-webpack-plugin": "^1.7.3"
+    "vconsole-webpack-plugin": "^1.7.3",
+    "vue-template-compiler": "^2.6.14"
   }
 }

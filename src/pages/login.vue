@@ -1,28 +1,23 @@
 <template>
-    <AvaSafeNavBar title="登录页" @navigate-back="onNavigateBack"></AvaSafeNavBar>
-    <div class="root">{{ message }}</div>
-    <div>{{ pageParam.message }}</div>
+    <div>
+        <AvaSafeNavBar title="登录页" @navigate-back="onNavigateBack"></AvaSafeNavBar>
+        <div class="root">{{ message }}</div>
+        <div>{{ pageParam.message }}</div>
+    </div>
 </template>
 
 <script>
     import AvaSafeNavBar from "@/lib/components/layout/AvaSafeNavBar";
-    import { usePageParam } from "@/lib/composables/use-page-param";
+    import { PageParamMixin } from "@/lib/mixins/page-param";
     export default {
         name: 'root',
+        mixins: [PageParamMixin],
         components: { AvaSafeNavBar },
-        setup() {
-            console.log('setup');
-            const pageParam = usePageParam({
-                message: '这里是默认参数'
-            });
-            return {
-                pageParam
-            };
-        },
         data() {
-            console.log('data');
-            console.log(this.pageParam.message);
             return {
+                pageParam: {
+                    message: '这里是默认参数'
+                },
                 message: 'message'
             };
         },

@@ -1,14 +1,16 @@
 <template>
-    <AvaSafeNavBar title="图片资源页"></AvaSafeNavBar>
-    <div>123</div>
-    <AvaImage :src="`${$publicPath}/image/logo.png`"></AvaImage>
-    <br>
-    <AvaImage width="100" height="100" cache @click="onClickAvaImage"></AvaImage>
-    <br>
-    <AvaIcon name="arrow-up" size="100" color="red"></AvaIcon>
-    <img :src="logoURL" alt="">
-    <br>
-    <div class="logo"></div>
+    <div>
+        <AvaSafeNavBar title="图片资源页"></AvaSafeNavBar>
+        <div>123</div>
+        <AvaImage :src="`${$publicPath}/image/logo.png`"></AvaImage>
+        <br>
+        <AvaImage width="100" height="100" cache @click="onClickAvaImage"></AvaImage>
+        <br>
+        <AvaIcon name="arrow-up" size="100" color="red"></AvaIcon>
+        <img :src="logoURL" alt="">
+        <br>
+        <div class="logo"></div>
+    </div>
 </template>
 
 <script>

@@ -8,7 +8,6 @@
         color，图标颜色
 -->
 <script>
-    import { computed, h } from "vue";
     import { addUnit } from "@/lib/utils/web-api/style";
     export default {
         name: "AvaIcon",
@@ -25,19 +24,21 @@
             size: [Number, String],
             color: String
         },
-        setup(props) {
-            const rootCls = computed(() => {
-                return [props.classPrefix, `${props.classPrefix}-${props.name}`];
-            });
-            const rootStyle = computed(() => {
+        computed: {
+            rootCls() {
+                return [this.classPrefix, `${this.classPrefix}-${this.name}`];
+            },
+            rootStyle() {
                 return {
-                    fontSize: addUnit(props.size),
-                    color: props.color
+                    fontSize: addUnit(this.size),
+                    color: this.color
                 };
-            });
-            return () => h(props.tag, {
-                class: rootCls.value,
-                style: rootStyle.value
+            }
+        },
+        render(h) {
+            return h(this.tag, {
+                class: this.rootCls,
+                style: this.rootStyle
             });
         }
     }

@@ -1,26 +1,29 @@
 <template>
-    <AvaSafeHeader @mounted="safeHeaderHeight = $event">123</AvaSafeHeader>
-    <div style="height: 25vh; background-color: #fff">123</div>
-    <div @click="navigateToLogin">登录测试页</div>
-    <div @click="navigateToImage">静态资源测试页</div>
-    <AvaSafeFooter :sticky-type="footerStickyType" :placeholder="placeholder" @mounted="onSafeFooterMounted">
-        AvaSafeFooter
-    </AvaSafeFooter>
+    <div>
+        <AvaSafeHeader @mounted="safeHeaderHeight = $event">height：{{ safeHeaderHeight }}</AvaSafeHeader>
+        <div style="height: 25vh; background-color: #fff">123</div>
+        <div @click="navigateToLogin">登录测试页</div>
+        <AvaNavigator name="image">静态资源测试页</AvaNavigator>
+        <AvaSafeFooter :sticky-type="footerStickyType" :placeholder="placeholder" @mounted="onSafeFooterMounted">
+            AvaSafeFooter
+        </AvaSafeFooter>
+    </div>
 </template>
 
 <script>
     import AvaSafeHeader from "@/lib/components/layout/AvaSafeHeader";
     import AvaSafeFooter from "@/lib/components/layout/AvaSafeFooter";
+    import AvaNavigator from "@/lib/components/route/AvaNavigator";
     import { navigateTo } from "@/lib/apicloud/route";
     export default {
         name: 'root',
-        components: { AvaSafeHeader, AvaSafeFooter },
+        components: { AvaNavigator, AvaSafeHeader, AvaSafeFooter },
         data() {
             return {
                 position: '',
                 safeHeaderHeight: 0,
                 footerStickyType: 'sticky',
-                placeholder: true,
+                placeholder: false,
             };
         },
         computed: {
@@ -36,9 +39,9 @@
             setTimeout(() => {
                 this.footerStickyType = 'fixed';
                 setTimeout(() => {
-                    this.placeholder = false;
+                    this.placeholder = true;
                 }, 10000);
-            }, 3000);
+            }, 5000);
 
             Promise.allSettled([
                 Promise.resolve(),
@@ -59,7 +62,7 @@
             navigateToLogin() {
                 navigateTo('login', {
                     pageParam: {
-                        // message: '从 root 页面来'
+                        message: '从 root 页面来'
                     }
                 });
             },
