@@ -226,7 +226,7 @@ export {
 
 ### lib 库
 
-在 `src/lib` 中提供了一些封装模块，可以在业务代码中引入使用。
+在 `src/lib` 中提供了一些封装模块，可以在业务代码中引入使用，代码文件有详细的使用说明。
 
 ```
 lib
@@ -236,6 +236,52 @@ lib
   ├─composables	内置的 vue 组合式 API
   └─utils       工具函数
 ```
+
+#### apicloud
+
+- 界面 / 交互反馈：`@/lib/apicloud/ui`
+- 数据存储：`@/lib/apicloud/storage`
+- 页面路由：`@/lib/apicloud/route`
+- 设备权限：`@/lib/apicloud/permission`
+- 网络请求：`@/lib/apicloud/network`
+- 第三方模块
+  - dialogBox：`@/lib/apicloud/modules/dialogBox`
+  - WXPhotoPicker：`@/lib/apicloud/modules/WXPhotoPicker`
+
+#### components
+
+- AvaIcon：图标
+- AvaImage：图片
+- route/AvaNavigator：页面导航
+- layout/AvaSafeArea：适配顶部状态栏、底部安全区
+- layout/AvaSafeHeader：适配顶部状态栏的头部
+- layout/AvaSafeFooter：适配底部安全区的底部
+- layout/AvaSafeNavBar：适配顶部状态栏的导航栏
+
+#### composables
+
+- usePageParam：页面参数
+
+```javascript
+import { usePageParam } from "@/lib/composables/use-page-param";
+export default {
+    setup() {
+        const pageParam = usePageParam({
+            message: '这里是默认参数'
+        });
+        return {
+            pageParam
+        };
+    }
+}
+```
+
+#### utils
+
+- validate.js：提供了一些验证函数
+- web-api/event：事件相关
+- web-api/scroll：各种尺寸与滚动条
+- web-api/style：CSS 样式相关
 
 
 
@@ -341,7 +387,6 @@ module.exports = {
 
 ### 优化点
 
-1. 困惑：browserslist 中配置的浏览器是支持箭头函数的，为什么打包后要把箭头函数进行编译
-2. 困惑：修改 browserslist 后，打包后为什么还会有 const 语法
-3. 使用 webpack 构建，不使用 vue-cli
-3. 加入 apicloud-cli，可以实时开发与同步
+1. 考虑要不要直接使用 webpack 构建，不使用 vue-cli
+2. 考虑能不能集成 apicloud-cli，实现 watch 监听编译并同步
+3. 困惑：browserslist 中配置的浏览器是支持箭头函数的，为什么打包后要把箭头函数进行编译

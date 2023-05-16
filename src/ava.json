@@ -5,6 +5,9 @@
         "login": {
             "url": "pages/login",
             "bgColor": "#f00"
+        },
+        "test": {
+            "url": "pages/test"
         }
     },
     "window": {

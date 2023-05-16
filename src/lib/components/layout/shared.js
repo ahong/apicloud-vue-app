@@ -17,6 +17,3 @@ export const safeAreaSharedProps = {
     zIndex: [Number, String],
     background: String
 };
-
-
-
