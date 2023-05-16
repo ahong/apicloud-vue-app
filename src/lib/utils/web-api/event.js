@@ -58,9 +58,9 @@ export function off(target, type, listener, options) {
  * @param {Function} listener 事件处理函数
  * @param {Boolean|Object} options 与事件处理函数相关的可选参数对象
  */
-export function one(target, type, listener, options) {
+export function once(target, type, listener, options) {
     if (Array.isArray(type)) {
-        return handleMultipleEvent(one, target, type, listener, options);
+        return handleMultipleEvent(once, target, type, listener, options);
     }
     on(target, type, function () {
         off(target, type, listener, options);
