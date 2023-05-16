@@ -7,7 +7,7 @@
 
 > 技术栈文档
 >
-> [Vue3](https://cn.vuejs.org/) / [Vue Cli](https://cli.vuejs.org/)
+> [Vue2](https://v2.cn.vuejs.org/) / [Vue Cli](https://cli.vuejs.org/)
 >
 > [APICloud 开发者文档](https://docs.apicloud.com/) / [config.xml 配置文档](https://docs.apicloud.com/Dev-Guide/app-config-manual) / [api 接口文档](https://docs.apicloud.com/Client-API/api)
 
