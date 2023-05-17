@@ -51,22 +51,16 @@ export function getDocumentSize() {
 
 /**
  * 获取文档在垂直方向的滚动距离
- * 兼容性：
- *  1. window.pageYOffset 属性是 window.scrollY 的别名，pageYOffset 是非标准属性，在 IE9-11 中需使用 pageYOffset，但两者在 IE<=8 下都不支持
- *  2. IE<=8 中，document.compatMode === 'CSS1Compat' 使用 document.documentElement.scrollTop，其它使用 document.body.scrollTop
  */
 export function getRootScrollTop() {
-    return window.pageYOffset || window.document.documentElement.scrollTop || window.document.body.scrollTop || 0;
+    return window.scrollY || window.document.body.scrollTop || 0;
 }
 
 /**
  * 获取文档在水平方向的滚动距离
- * 兼容性：
- *  1. window.pageXOffset 属性是 window.scrollX 的别名，pageXOffset 是非标准属性，在 IE9-11 中需使用 pageXOffset，但两者在 IE<=8 下都不支持
- *  2. IE<=8 中，document.compatMode === 'CSS1Compat' 使用 document.documentElement.scrollLeft，其它使用 document.body.scrollLeft
  */
 export function getRootScrollLeft() {
-    return window.pageXOffset || window.document.documentElement.scrollLeft || window.document.body.scrollLeft || 0;
+    return window.scrollX || window.document.body.scrollLeft || 0;
 }
 
 /**
@@ -77,7 +71,7 @@ export function getScrollTop(el) {
     if (!el) {
         return getRootScrollTop();
     }
-    return 'scrollTop' in el ? el.scrollTop : el.pageYOffset;
+    return 'scrollTop' in el ? el.scrollTop : el.scrollY;
 }
 
 /**
@@ -88,7 +82,7 @@ export function getScrollLeft(el) {
     if (!el) {
         return getRootScrollLeft();
     }
-    return 'scrollLeft' in el ? el.scrollLeft : el.pageXOffset;
+    return 'scrollLeft' in el ? el.scrollLeft : el.scrollX;
 }
 
 /**
@@ -102,7 +96,7 @@ export function setScrollTop(el, value) {
         el.scrollTop = value;
     } else {
         // window
-        el.scrollTo(el.pageXOffset, value);
+        el.scrollTo(el.scrollX, value);
     }
 }
 
@@ -117,7 +111,7 @@ export function setScrollLeft(el, value) {
         el.scrollLeft = value;
     } else {
         // window
-        el.scrollTo(value, el.pageYOffset);
+        el.scrollTo(value, el.scrollY);
     }
 }
 
