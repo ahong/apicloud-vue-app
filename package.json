@@ -1,6 +1,6 @@
 {
   "name": "apicloud-vue-app",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "基于 Vue 开发 APICloud App 的解决方案（Solution for developing APICloud App based on Vue）",
   "author": "ahong <1002363357@qq.com> (https://github.com/ahong)",
   "license": "MIT",
