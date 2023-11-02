@@ -1,5 +1,5 @@
 <!--
-    适配顶部状态栏的导航栏
+    适配系统状态栏的导航栏
     Props
         title：导航栏标题
         color：导航栏字体、图标颜色，默认为 323233
@@ -41,7 +41,7 @@
 
 <script>
     import { computed } from "vue";
-    import { navigateBack } from "@/lib/apicloud/route";
+    import { navigateBack } from "@/lib/apicloud/router";
     import { isDef } from "@/lib/utils/validate";
     import { safeAreaSharedProps } from "./shared";
     export default {

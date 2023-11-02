@@ -11,7 +11,7 @@
 <script>
     import AvaSafeHeader from "@/lib/components/layout/AvaSafeHeader";
     import AvaSafeFooter from "@/lib/components/layout/AvaSafeFooter";
-    import { navigateTo } from "@/lib/apicloud/route";
+    import { navigateTo } from "@/lib/apicloud/router";
     export default {
         name: 'root',
         components: { AvaSafeHeader, AvaSafeFooter },

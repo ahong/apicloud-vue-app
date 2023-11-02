@@ -1,14 +1,14 @@
 <!--
-    页面跳转组件：对应 lib/apicloud/route.js 的功能
+    页面跳转组件：对应 lib/apicloud/router.js 的功能
     Props
         tag：根节点的 HTML 标签
         type：页面跳转方式，默认为 navigateTo
-        name：路由方法需要的 name 参数，具体见 route.js
-        options：路由方法需要的 options 参数，具体见 route.js
+        name：路由方法需要的 name 参数，具体见 router.js
+        options：路由方法需要的 options 参数，具体见 router.js
 -->
 <script>
     import { h } from "vue";
-    import * as Route from "@/lib/apicloud/route";
+    import * as Route from "@/lib/apicloud/router";
     export default {
         name: "AvaNavigator",
         props: {
